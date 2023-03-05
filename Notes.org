@@ -1,5 +1,24 @@
 
 * Notes
 
+** Converting org to html
+
+I want to generate html from org, the body only, to insert contents into templates.
+ 
+I was looking for a way to use command line args in elisp, which is not hard, but I somehow didn't think about stdin, and luckily I stumbled upon this snippet while searching for info on the ~org-html-export-as-html~ function:
+https://gnu.support/gnu-emacs/emacs-lisp/Emacs-Lisp-emacs-org-to-html-el-on-command-line-convert-your-Org-files-on-command-line-to-HTML-output.html
+
+This is going to be slow, but it's a tiny blog anyway.
+
+$ cat test-page.org | ./build.el
+...
+<div class="outline-text-3" id="text-1-1">
+<p>
+text
+</p>
+</div>
+...
+</div>
+
 
 
