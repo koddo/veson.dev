@@ -21,4 +21,10 @@ text
 </div>
 
 
+The html is not indented as you might have noticed, and the :html-indent does nothing, but there's a command line utility called =tidy=, see https://www.html-tidy.org/.
+
+$ cat test-page.org | ./build.el | tidy --indent auto
+
+Its ouput contains warnings and it adds proper html5 body and headers, but that's configurable.
+
 
