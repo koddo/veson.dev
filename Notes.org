@@ -28,3 +28,23 @@ $ cat test-page.org | ./build.el | tidy --indent auto
 Its ouput contains warnings and it adds proper html5 body and headers, but that's configurable.
 
 
+*** In-line code using =, ~, backticks `, emphasis, and escaping characters in org-mode
+
+The most frustrating thing in =org-mode= is inability to use backticks for inline code `like this`.
+You have to use emphasis ==like this==, and when there's an equal sign in the middle, e.g., =<div class​==​"foo">=, the emphasis breaks, unless the equal sign is escaped with two zero width spaces around it.
+
+Options: https://stackoverflow.com/questions/16944298/org-mode-inline-code-with-equals-signs
+https://emacs.stackexchange.com/questions/13820/inline-verbatim-and-code-with-quotes-in-org-mode
+https://orgmode.org/manual/Emphasis-and-Monospace.html
+https://orgmode.org/manual/Escape-Character.html
+Insert it: =C-x 8 <RET> zero width space <RET>=, or use a function to wrap a character: https://stackoverflow.com/questions/15324852/how-do-i-escape-slash-in-org-mode/75398146#75398146
+
+And there's an issue with =zero width space=, it should be stripped from export.
+Org-mode by itself doesn't do this yet, there are attempts of fixing this: https://mail.gnu.org/archive/html/emacs-orgmode/2022-07/msg00785.html
+For now there's a package that strips it: https://github.com/QiangF/org-extra-emphasis
+More about this pakcage:
+https://emacsnotes.wordpress.com/2022/09/09/intra-word-emphasis-in-org-mode-using-zero-width-spaces-east-asian-language-users-please-take-note/
+https://emacsnotes.wordpress.com/2022/06/29/use-org-extra-emphasis-when-you-need-more-emphasis-markers-in-emacs-org-mode/
+
+And luckily, =~= and === can be used interchangeably if you only plan to export to html, it mostly matters for latex.
+
