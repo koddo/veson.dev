@@ -103,6 +103,21 @@ Haven't looked closely.
 
 
 
+** HTML parts in org files
+
+*** HTML5
+
+Semantic elements:
+https://html5doctor.com/element-index/
+https://www.smashingmagazine.com/2022/07/article-section-elements-accessibility/
+
+=#+begin_aside...= gets rendered to =<aside>...</aside>=.
+When =aside= is in the =org-html-html5-elements=.
+
+The =:html-container "section"= option for publishing turns top-level headings into sections.  
+Or these properties can be added to headings manually: =:HTML_CONTAINER: article= and =:HTML_CONTAINER: section=.
+
+
 ** In-line code in org-mode using =, ~, backticks `, emphasis, and escaping characters
 
 The most frustrating thing in =org-mode= is inability to use backticks for inline code `like this`.
