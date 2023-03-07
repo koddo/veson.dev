@@ -1,6 +1,9 @@
 (ns core
   "https://veson.dev/blog -- statically generated"
+  (:require [stasis.core :as stasis])
   )
+
+(stasis/slurp-directory "blog" #".*\.org$")
 
 (defn exec
   "Invoke me with clojure -X core/exec"
