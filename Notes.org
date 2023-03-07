@@ -3,6 +3,8 @@
 
 ** Converting org to html
 
+*** Option: Use emacs to convert org
+
 I want to generate html from org, the body only, to insert contents into templates.
  
 I was looking for a way to use command line args in elisp, which is not hard, but I somehow didn't think about stdin, and luckily I stumbled upon this snippet while searching for info on the ~org-html-export-as-html~ function:
@@ -26,6 +28,24 @@ The html is not indented as you might have noticed, and the :html-indent does no
 $ cat test-page.org | ./build.el | tidy --indent auto
 
 Its ouput contains warnings and it adds proper html5 body and headers, but that's configurable.
+
+
+
+*** Option: Use an external exporter of org files
+
+
+
+
+*** Option: Exporting parsed org as s-exps
+
+It can be exported to xml to be processed later, I like the idea, but it would be actually easier to process s-exps in our case.
+https://github.com/ndw/org-to-xml
+
+https://emacs.stackexchange.com/questions/17622/how-can-i-walk-an-org-mode-tree
+
+#+begin_src emacs-lisp
+(print (org-element-parse-buffer))
+#+end_src 
 
 
 *** In-line code using =, ~, backticks `, emphasis, and escaping characters in org-mode
