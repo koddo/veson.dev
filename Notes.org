@@ -126,4 +126,5 @@ Another way to include source code blocks: =src_R[:exports code]{X <- 3}=.
 Can be just =src_text[:exports code]{hello world}=, or even just =src_text{hello world}=,
 if you add this at the top of the file: =#+PROPERTY: header-args :exports code=
 
+There's a mode that hides emphasis characters in emacs to reduce clutter: https://github.com/awth13/org-appear
 
