@@ -118,6 +118,25 @@ The =:html-container "section"= option for publishing turns top-level headings i
 Or these properties can be added to headings manually: =:HTML_CONTAINER: article= and =:HTML_CONTAINER: section=.
 
 
+*** Inserting pre-rendered html in org files
+
+#+begin_src
+#+include: "test-html-include.html" export html
+
+#+html: <p>literal html code for export</p>
+
+#+begin_export html
+<p>also gets included</p>
+#+end_export
+
+Just one tag: @@html:<br />@@
+@@html:<b>insert bold text as a whole</b>@@
+@@html:<b>@@bold text between two separately inserted tags@@html:</b>@@
+#+end_src
+
+See https://orgmode.org/manual/Quoting-HTML-tags.html
+
+
 ** In-line code in org-mode using =, ~, backticks `, emphasis, and escaping characters
 
 The most frustrating thing in =org-mode= is inability to use backticks for inline code `like this`.
