@@ -48,6 +48,60 @@ https://emacs.stackexchange.com/questions/17622/how-can-i-walk-an-org-mode-tree
 #+end_src 
 
 
+
+
+** Configuring html exported via emacs
+
+*** Option: Custom ids and classes of exported org
+
+By default there are random ids like id="text-org2d4245f".
+
+But we can add =:CUSTOM_ID: my custom id= to the properties of a header manually.
+
+Adding automatically the =CUSTOM_ID=:
+https://writequit.org/articles/emacs-org-mode-generate-ids.html
+Like =:CUSTOM_ID: h-7c38f8ef-0c8c-4f17-a7da-7ed7d5eedeff=
+
+The HTML exporter assigns the following special CSS classes:
+https://orgmode.org/manual/CSS-support.html
+
+Add attributes like =#+ATTR_HTML: :class myclass :id myid= to source blocks:
+https://emacs.stackexchange.com/questions/68592/add-css-class-or-id-tag-to-individual-src-blocks
+https://www.reddit.com/r/emacs/comments/fdwm8m/is_it_possible_to_add_a_custom_header_to_orgmode/
+
+Generate anchors from headlines:
+https://emacs.stackexchange.com/questions/614/creating-permalinks-for-sections-in-html-exported-from-org-mode
+https://github.com/alphapapa/unpackaged.el#export-to-html-with-useful-anchors
+
+Less divs by redefining =org-html-section=:
+https://www.reddit.com/r/orgmode/comments/fmk4eb/html_export_orghtmlsection_adds_a_div_i_do_not/
+
+https://orgmode.org/manual/Publishing-options.html
+for options like =:with-toc=, =:html-html5-fancy=, etc
+
+
+
+*** Option: Derived exporter
+
+We could make a derived exporter to control what and how is converted.
+https://orgmode.org/manual/Advanced-Export-Configuration.html
+https://orgmode.org/worg/dev/org-export-reference.html
+
+
+
+*** Option: Another exporting backend
+
+https://github.com/balddotcat/ox-slimhtml
+This export backend is now part of org.
+Not actively maintained though.
+
+And this:
+https://github.com/vascoferreira25/ox-tailwind
+Haven't looked closely.
+"the only thing that it does is allowing you to customize the classes of the HTML and exporting a more barebones HTML (It does not create as many divs and sections as the normal HTML export back-end)"
+
+
+
 *** In-line code using =, ~, backticks `, emphasis, and escaping characters in org-mode
 
 The most frustrating thing in =org-mode= is inability to use backticks for inline code `like this`.
