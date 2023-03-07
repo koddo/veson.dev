@@ -4,6 +4,14 @@
 ;; (princ (version))
 ;; (princ (org-version))
 
+(require 'org)
+
+;; This library strips zero width space,
+;; that acts as an escape character in org-mode, see https://orgmode.org/manual/Emphasis-and-Monospace.html
+;; Org-mode doesn't do this by itself yet.
+(load-file "org-extra-emphasis/org-extra-emphasis.el")
+
+
 ;; https://orgmode.org/manual/Publishing-options.html
 (setq publish-params
       (list

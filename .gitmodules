@@ -1,0 +1,3 @@
+[submodule "org-extra-emphasis"]
+	path = org-extra-emphasis
+	url = https://github.com/QiangF/org-extra-emphasis
