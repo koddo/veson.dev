@@ -1,5 +1,5 @@
 (ns core
-  "FIXME: my new org.corfield.new/scratch project."
+  "https://veson.dev/blog -- statically generated"
   )
 
 (defn exec
