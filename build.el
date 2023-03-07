@@ -4,9 +4,20 @@
 ;; (princ (version))
 ;; (princ (org-version))
 
+;; https://orgmode.org/manual/Publishing-options.html
+(setq publish-params
+      (list
+       :with-toc nil
+       :section-numbers nil
+       :html-doctype "html5"
+       :html-html5-fancy t            ; for #+attr_html before #+begin ... #+end blocks and for exporting #+begin_aside as <aside>
+       :html-container "article"      ; for top-level headings
+       ))
 
-;; taken from https://gnu.support/gnu-emacs/emacs-lisp/Emacs-Lisp-emacs-org-to-html-el-on-command-line-convert-your-Org-files-on-command-line-to-HTML-output.html
-(defun org-stdin-to-html-body-only ()
+(setq body-only t)
+
+
+(defun org-stdin-to-html (org-publish-options body-only)
   "Reads org text body from STDIN and export full only body HTML"
   (let ((org-document-content "")
         this-read)
@@ -15,8 +26,8 @@
     (with-temp-buffer
       (org-mode)
       (insert org-document-content)
-      (org-html-export-as-html nil nil nil t)
+      (org-html-export-as-html nil nil nil body-only org-publish-options)
       (princ (buffer-string)))))
 
-(org-stdin-to-html-body-only)
+(org-stdin-to-html publish-params body-only)
 
