@@ -163,3 +163,28 @@ if you add this at the top of the file: =#+PROPERTY: header-args :exports code=
 
 There's a mode that hides emphasis characters in emacs to reduce clutter: https://github.com/awth13/org-appear
 
+
+
+** Static site generators
+
+*** Option: stasis+enlive
+
+Stasis gives you total freedom in how to structure your project.
+There are only a couple of functions, like =slurp-directory= for getting all relevant pages to process and =export-pages= for writing the final result.
+Everything else you configure yourself in code, and this is clojure, you have all gamut of functions to work with data. 
+https://github.com/magnars/stasis
+
+I decided to use enlive as a template engine.
+In its basic form it can just inject articles into elements of templates.
+This makes it possible to work on templates completely separately of everything else.
+Templates are just html pages, nothing more, there's no code, only target elements.
+https://github.com/cgrand/enlive
+
+*** Other options in clojure and/or emacs
+
+stasis+hiccup
+https://cjohansen.no/building-static-sites-in-clojure-with-stasis/
+https://nickgeorge.net/programming/custom-static-clojure-websites-an-update/
+
+
+
