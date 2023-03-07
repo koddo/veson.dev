@@ -122,3 +122,8 @@ https://emacsnotes.wordpress.com/2022/06/29/use-org-extra-emphasis-when-you-need
 
 And luckily, =~= and === can be used interchangeably if you only plan to export to html, it mostly matters for latex.
 
+Another way to include source code blocks: =src_R[:exports code]{X <- 3}=.
+Can be just =src_text[:exports code]{hello world}=, or even just =src_text{hello world}=,
+if you add this at the top of the file: =#+PROPERTY: header-args :exports code=
+
+
