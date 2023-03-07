@@ -2,6 +2,7 @@
 
 ;; (princ (expand-file-name invocation-name invocation-directory))    ; the path of emacs executable
 ;; (princ (version))
+;; (princ (org-version))
 
 
 ;; taken from https://gnu.support/gnu-emacs/emacs-lisp/Emacs-Lisp-emacs-org-to-html-el-on-command-line-convert-your-Org-files-on-command-line-to-HTML-output.html
