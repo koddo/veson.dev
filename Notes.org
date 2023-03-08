@@ -48,6 +48,130 @@ https://emacs.stackexchange.com/questions/17622/how-can-i-walk-an-org-mode-tree
 #+end_src 
 
 
+** Convert multiple files at once                                     :emacs:
+
+Motivation: starting a separate emacs instance for each file to convert is slow.
+
+E.g., running one hundred instances, each printing a short string, takes four seconds:
+
+#+begin_src text
+$ time for i in {1..100} ; do emacs --quick --batch --eval '(princ 1)' ; done
+1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+real	0m3.966s
+user	0m2.637s
+sys	0m1.313s
+#+end_src
+
+
+*** Option: insert an information separator between files when piping them altogether
+
+https://en.wikipedia.org/wiki/Delimiter#ASCII_delimited_text
+ASCII char num 28 -- INFORMATION SEPARATOR FOUR -- file separator -- End of file. Or between a concatenation of what might otherwise be separate files. 
+
+Escape the delimiter in files before joining them and sending via pipe to emacs. 
+
+from https://unix.stackexchange.com/questions/522637/passing-multiple-files-through-stdin-over-ssh#comment966701_522709:
+#+begin_quote
+Therefore, I'd suggest EOT="$(printf $'\x1c')" in advanced shells or else EOT="$(awk 'BEGIN{printf"%c",28}')" for compatibility. You'll need to quote it when you put it in place, such as echo "$EOT$EOT$EOT" (tripled to lower the odds of matching a binary file).
+#+end_quote
+
+
+
+
+*** Option: send a list of files to convert and store intermediate results
+
+
+
+*** Option: start an emacs server and use emacsclient to convert files one by one
+
+(setq server-socket-dir ".")
+(setq server-name ".local-emacs-server-socket")   ; don't forget to .gitignore
+(server-start)
+
+Or set TMPDIR, see https://stackoverflow.com/questions/22071093/location-of-emacs-socket/23615026#23615026
+
+But we are going to start it with =emacs --daemon=.
+The TMPDIR env var doesn't seem to work when run as a daemon, unfortunately.
+
+#+begin_example
+$ ( export NAME=$(mktemp) ; emacs --quick --daemon="$NAME" --load=my-defuns.el ; echo "socket: $NAME" )
+Starting Emacs daemon.
+socket: /tmp/tmp.1e9zYPJqX7
+#+end_example
+
+Now we want to connect to this emacs daemon using =emacsclient= and ask it to convert org to html and print the result.
+
+
+**** Caveat: emacsclient can't print anything, and how to deal with that
+
+Ok, emacs is run as a daemon, there's another problem haha:
+emacsclient can't print anything to stdout, it can only output the return values, and all the printing stays within the emacs daemon.
+
+#+begin_example
+$ emacsclient --socket-name='...' --eval '(progn (princ "hello") (princ "111\n222"))'
+"111\n222"
+#+end_example
+
+People start another instance of emacs each time to eval this output string and print it.
+https://emacs.stackexchange.com/questions/28665/print-unquoted-output-to-stdout-from-emacsclient
+But this isn't helpful in our case, we want to avoid running a lot of emacs instances.
+
+We could try and parse emacs strings ourselves to get rid of all those escaped chars.
+
+But here's an easier solution: the =echo= command has the =-e= flag, "enable interpretation of backslash escapes".
+https://emacs.stackexchange.com/questions/30689/pretty-print-s-expressions-from-the-command-line
+
+#+begin_example
+$ echo -e $( echo "111\n222" )
+111
+222
+#+end_example
+
+Almost there.
+
+#+begin_example
+$ echo -e -n $( emacsclient --socket-name='...' --eval '(princ "111\n222")' )
+"111
+222"
+#+end_example
+
+The last step is easy: get rid of the qoutes. Can be done with =sed= before invoking =echo -e=. Or with clojure later.
+
+#+begin_example
+$ echo -e -n $( emacsclient --socket-name='...' --eval '(princ "111\n222")'  | sed 's/^.//;s/.$//'  )
+111
+222
+#+end_example
+
+=| sed 's/^.//;s/.$//'= here is the same as running sed twice: =| sed 's/^.//' | sed 's/.$//'= 
+
+=-n= means do not output the trailing newline btw.
+
+
+
+
+**** Caveat: emacsclient can't read from stdin
+
+I've tried to start an emacs server and use =read-from-minibuffer= for reading from stdin by emacsclient, but this doesn't work.
+Apparently this function only reads from stdin when we run =emacs --script=.
+
+It seems the only solution to this is making =mktemp= files and send their paths back and forth between emacs server and emacsclient.
+
+
++** TODO rewrite the function that reads from stdin              :emacs:maybe:+
+++
++It now does the following:+
+++
++#+begin_src elisp+
++(while (setq this-read (ignore-errors (read-from-minibuffer "")))+
++(setq org-document-content (concat org-document-content "\n" this-read)))+
++#+end_src+
+++
++I want it to collect all chunks and then join them.+
+
+
+*** Option: creating intermediate =mktemp= files and send their paths between emacs server and client 
+
 
 
 ** Configuring html exported via emacs
