@@ -312,3 +312,23 @@ https://nickgeorge.net/programming/custom-static-clojure-websites-an-update/
 
 
 
+
+
+
+** How to run it
+
+Generate html from org separately:
+=$ cat test-page.org | ./build.el | tidy --indent auto --show-body-only yes --quiet yes=
+
+Repl:
+
+#+begin_src sh
+$ nix-shell
+[nix-shell]$ clj -A:cider-clj
+...
+nREPL server started on port 42069 on host localhost - nrepl://localhost:42069
+#+end_src
+
+=M-x cider-connect=
+
+
