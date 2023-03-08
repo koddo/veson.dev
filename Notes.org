@@ -3,7 +3,7 @@
 
 ** Converting org to html
 
-*** Option: Use emacs to convert org
+*** Option: Use emacs to convert org                                  :emacs:
 
 I want to generate html from org, the body only, to insert contents into templates.
  
@@ -36,7 +36,7 @@ Its ouput contains warnings and it adds proper html5 body and headers, but that'
 
 
 
-*** Option: Exporting parsed org as s-exps
+*** Option: Exporting parsed org as s-exps                            :emacs:
 
 It can be exported to xml to be processed later, I like the idea, but it would be actually easier to process s-exps in our case.
 https://github.com/ndw/org-to-xml
