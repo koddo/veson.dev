@@ -1,3 +1,30 @@
 
 * Todo
 
+** TODO collect emacs warnings and suppress irrelevant          :emacs:maybe:
+
+Suppress irrelevant emacs warnings:
+
+https://www.gnu.org/software/emacs/manual/html_node/elisp/Warning-Options.html
+
+warning-minimum-level
+warning-minimum-log-level
+warning-suppress-types
+warning-suppress-log-types
+
+
+Or just filter them out from output.
+
+
+These warnings occur on =(require 'org-extra-emphasis)=:
+`org-odt-extra-styles' not found.  Upgrade to `ox-odt-9.5.3.467' or later.
+`org-odt-extra-styles' and `org-ods-automatic-styles' is updated for this session
+
+
+** TODO convert multiple org files at once                            :emacs:
+
+
+
+** TODO measure how slow it is to convert org to html via emacsclient :emacs:
+
+
