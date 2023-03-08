@@ -3,13 +3,15 @@
 ;; (princ (expand-file-name invocation-name invocation-directory))    ; the path of emacs executable
 ;; (princ (version))
 ;; (princ (org-version))
+;; (princ load-path)
 
-(require 'org)
+;; (require 'org)
 
 ;; This library strips zero width space,
 ;; that acts as an escape character in org-mode, see https://orgmode.org/manual/Emphasis-and-Monospace.html
 ;; Org-mode doesn't do this by itself yet.
-(load-file "org-extra-emphasis/org-extra-emphasis.el")
+(add-to-list 'load-path (expand-file-name "org-extra-emphasis"))
+(require 'org-extra-emphasis)
 
 
 ;; https://orgmode.org/manual/Publishing-options.html
@@ -37,5 +39,11 @@
       (org-html-export-as-html nil nil nil body-only org-publish-options)
       (princ (buffer-string)))))
 
-(org-stdin-to-html publish-params body-only)
+
+(defun run ()
+  (interactive)
+  (org-stdin-to-html publish-params body-only))
+
+
+(run)
 
