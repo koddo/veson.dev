@@ -31,10 +31,19 @@ $ cat test-page.org | ./convert-org-from-stdin.el | tidy --indent auto
 
 Its ouput contains warnings and it adds proper html5 body and headers, but that's configurable.
 
+*** Option: use a package called org-export
+
+https://github.com/nhoffman/org-export
+
+It converts a single file though, it's just an alternative to =emacs --script=.
+Converting multiple files would be as slow.
 
 
 *** Option: Use an external exporter of org files
 
+https://github.com/honmaple/org-python
+
+https://github.com/eigenhombre/clj-org
 
 
 
