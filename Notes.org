@@ -12,7 +12,8 @@ https://gnu.support/gnu-emacs/emacs-lisp/Emacs-Lisp-emacs-org-to-html-el-on-comm
 
 This is going to be slow, but it's a tiny blog anyway.
 
-$ cat test-page.org | ./build.el
++$ cat test-page.org | ./build.el+
+$ cat test-page.org | ./convert-org-from-stdin.el
 ...
 <div class="outline-text-3" id="text-1-1">
 <p>
@@ -25,7 +26,8 @@ text
 
 The html is not indented as you might have noticed, and the :html-indent does nothing, but there's a command line utility called =tidy=, see https://www.html-tidy.org/.
 
-$ cat test-page.org | ./build.el | tidy --indent auto
++$ cat test-page.org | ./build.el | tidy --indent auto+
+$ cat test-page.org | ./convert-org-from-stdin.el | tidy --indent auto
 
 Its ouput contains warnings and it adds proper html5 body and headers, but that's configurable.
 
@@ -318,7 +320,8 @@ https://nickgeorge.net/programming/custom-static-clojure-websites-an-update/
 ** How to run it
 
 Generate html from org separately:
-=$ cat test-page.org | ./build.el | tidy --indent auto --show-body-only yes --quiet yes=
++=$ cat test-page.org | ./build.el | tidy --indent auto --show-body-only yes --quiet yes=+
+=$ cat test-page.org | ./convert-org-from-stdin.el | tidy --indent auto --show-body-only yes --quiet yes=
 
 Repl:
 
