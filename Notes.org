@@ -172,7 +172,16 @@ It seems the only solution to this is making =mktemp= files and send their paths
 +I want it to collect all chunks and then join them.+
 
 
-*** Option: creating intermediate =mktemp= files and send their paths between emacs server and client 
+*** Option: creating intermediate =mktemp= files and send their paths between emacs server and emacsclient 
+
+from https://stackoverflow.com/questions/48109547/how-to-use-emacsclient-e-command-to-convert-a-org-file-to-html/48121525#48121525:
+
+emacsclient -e "(progn (find-file \"file.org\") (org-html-export-to-html) (kill-buffer))" 
+
+=org-html-export-to-html= has an async option, but it requires using =org-export-stack=, and I haven't looked into this.
+If we ever need to scale, it would probably be easier to have multiple emacs servers.
+
+Make sure you have a clean-up strategy. Copying a file to a =.my-intermediate-results/= directory and giving it a random name before converting would be safer that converting files in the =blog/= dir, this lowers the chances of removing articles by accident.
 
 
 
