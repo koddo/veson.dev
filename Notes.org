@@ -355,5 +355,12 @@ nREPL server started on port 42069 on host localhost - nrepl://localhost:42069
 
 Then =M-x cider-connect=.
 
+*** Convert org using emacs server and emacsclient
+
+#+begin_src example
+( export NAME=$(mktemp) ; emacs --quick --daemon="$NAME" --load=emacs-server.init.el ; echo "$NAME" )
+emacsclient --socket-name='...' --eval '(my-convert-org-to-html "blog/test-entry.org")'
+emacsclient --socket-name='...' --eval '(kill-emacs)'
+#+end_src
 
 
