@@ -61,6 +61,19 @@ https://emacs.stackexchange.com/questions/17622/how-can-i-walk-an-org-mode-tree
 #+end_src 
 
 
+
+*** Option: publishing the entire website with org-publish
+
+I don't employ this option because I'd like to use =enlive= as a template engine.
+
+https://orgmode.org/manual/Publishing.html
+https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
+https://systemcrafters.net/publishing-websites-with-org-mode/building-the-site/
+https://taingram.org/blog/org-mode-blog.html
+https://emacs.love/weblorg/
+https://pavpanchekha.com/blog/org-mode-publish.html
+
+
 ** Convert multiple files at once                                     :emacs:
 
 Motivation: starting a separate emacs instance for each file to convert is slow.
