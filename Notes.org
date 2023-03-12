@@ -33,6 +33,11 @@ $ cat test-page.org | ./convert-org-from-stdin.el | tidy --indent auto
 
 Its ouput contains warnings and it adds proper html5 body and headers, but that's configurable.
 
+**** Trade-off: I love emacs and org, and I don't care much about performance
+
+It takes more than a second to convert one org file. The good news is we can have a pool of emacs instances to convert in parallel.
+
+
 *** Option: use a package called org-export
 
 https://github.com/nhoffman/org-export
@@ -203,7 +208,7 @@ from https://stackoverflow.com/questions/48109547/how-to-use-emacsclient-e-comma
 emacsclient -e "(progn (find-file \"file.org\") (org-html-export-to-html) (kill-buffer))" 
 
 =org-html-export-to-html= has an async option, but it requires using =org-export-stack=, and I haven't looked into this.
-If we ever need to scale, it would probably be easier to have multiple emacs servers.
+If we ever need to scale, it would probably be easier to have multiple emacs servers in parallel.
 
 Make sure you have a clean-up strategy. Copying a file to a =.my-intermediate-results/= directory and giving it a random name before converting would be safer that converting files in the =blog/= dir, this lowers the chances of removing articles by accident.
 
