@@ -1,15 +1,16 @@
 (ns core
   "https://veson.dev/blog -- statically generated"
   (:require [stasis.core :as stasis])
-  (:require [clojure.java.shell])
+  (:require [clojure.java.shell :as sh])
   )
 
 (stasis/slurp-directory "blog" #".*\.org$")
 
 (comment
-  (clojure.java.shell/sh "ls asdf")
-  (clojure.java.shell/sh "nix-shell" "--run" "cat blog/test-entry.org | ./convert-org-from-stdin.el")
-  (clojure.java.shell/sh "nix-shell" "--run" "cat blog/test-entry.org | ./convert-org-from-stdin.el | tidy --indent auto --show-body-only yes --quiet yes")
+  (sh/sh "ls")
+  (sh/sh "nix-shell" "--run" "cat blog/test-entry.org | ./convert-org-from-stdin.el")
+  (sh/sh "nix-shell" "--run" "cat blog/test-entry.org | ./convert-org-from-stdin.el | tidy --indent auto --show-body-only yes --quiet yes")
+
   )
 
 (defn exec
