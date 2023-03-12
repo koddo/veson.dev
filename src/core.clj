@@ -14,6 +14,8 @@
   (sh/sh "nix-shell" "--run" "cat blog/test-entry.org | ./convert-org-from-stdin.el")
   (sh/sh "nix-shell" "--run" "cat blog/test-entry.org | ./convert-org-from-stdin.el | tidy --indent auto --show-body-only yes --quiet yes")
 
+  (convert-org-str-to-html-str "* hello world\n\n** foobar\n\n\n")
+
   )
 
 (defn emacsclient-my-convert-org-to-html [file-path]
