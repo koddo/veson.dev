@@ -374,6 +374,41 @@ I only need headless emacs for scripting, so this is the best option to me.
 *** Option: compile from source
 
 
+** Front matter
+
+Definition from printing: everything in a book that comes before the story begins is its front matter
+
+Jekyll and other static site generators let you set variables for a page in a block called front matter:
+
+#+begin_example
+---
+title: Once upon a time
+layout: post
+---
+#+end_example
+
+I decided to use an src block instead of =---=, because I want to have an edn structure:
+
+#+begin_example
+#+name: front-matter
+#+begin_src clojure
+{
+ :title "Once upon a time"
+ :layout "post"
+ }
+#+end_src
+#+end_example
+
+This lets us have arbitrary data in the front matter, which can be used later in templates.
+In jekyll you'd have to have separate data files: https://jekyllrb.com/docs/datafiles/
+
+Triple minus is easier to type, but this is emacs, it can create front matter for us in a hook, for example.
+
+The data can be cut from the front matter block with a regex and converted to map by edn reader, this is safe:
+from https://github.com/clojure/tools.reader#example-usage
+"To read data structures, functions from clojure.tools.reader.edn should be used, since those are safe and don't allow any code execution at all."
+
+
 ** How to run it
 
 *** Generate html from org separately
