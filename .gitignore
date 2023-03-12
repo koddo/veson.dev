@@ -2,3 +2,5 @@
 .cpcache
 .cider-repl-history
 .nrepl-port
+
+.my-intermediate-results
