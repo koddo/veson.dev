@@ -409,6 +409,16 @@ from https://github.com/clojure/tools.reader#example-usage
 "To read data structures, functions from clojure.tools.reader.edn should be used, since those are safe and don't allow any code execution at all."
 
 
+
+** DDD
+
+get a structure of files to publish
+for each file
+    convert it to html -- get its contents
+    use the template
+    write to the publish/ dir
+
+
 ** How to run it
 
 *** Generate html from org separately
