@@ -7,15 +7,23 @@
   (:require [clojure.tools.reader.edn :as edn])
   )
 
-(stasis/slurp-directory "blog" #".*\.org$")
+
 
 (comment
   (sh/sh "ls")
   (sh/sh "nix-shell" "--run" "cat blog/test-entry.org | ./convert-org-from-stdin.el")
   (sh/sh "nix-shell" "--run" "cat blog/test-entry.org | ./convert-org-from-stdin.el | tidy --indent auto --show-body-only yes --quiet yes")
 
+  (keys
+   (stasis/slurp-directory "blog" #".*\.org$"))
+  (slurp "blog/test-entry.org")
+
   (convert-org-str-to-html-str "* hello world\n\n** foobar\n\n\n")
 
+  (edn/read-string "")
+  (edn/read-string "1")
+  (edn/read-string "{:a 1}")
+  
   )
 
 (defn emacsclient-my-convert-org-to-html [file-path]
