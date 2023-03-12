@@ -355,6 +355,25 @@ https://nickgeorge.net/programming/custom-static-clojure-websites-an-update/
 
 
 
+
+** Managing versions of emacs, clojure, etc
+
+*** Option: use system-wise emacs and clojure
+
+This would be ok, but having two versions of everything installed for different purposes is not fun to manage.
+
+I use emacs every day, I update packages quite often. I don't think I'm going to update versions for the blog as often.
+
+
+
+*** Option: use nix
+
+I only need headless emacs for scripting, so this is the best option to me.
+
+
+*** Option: compile from source
+
+
 ** How to run it
 
 *** Generate html from org separately
