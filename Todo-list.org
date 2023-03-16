@@ -28,3 +28,9 @@ These warnings occur on =(require 'org-extra-emphasis)=:
 ** TODO measure how slow it is to convert org to html via emacsclient :emacs:
 
 
+** TODO convert old commits to conventional commits               :maybe:git:
+
+** TODO linter for conventional commits                           :maybe:git:
+
+** TODO CI/CD                                                           :git:
+
