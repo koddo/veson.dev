@@ -446,3 +446,10 @@ emacsclient --socket-name='...' --eval '(kill-emacs)'
 #+end_src
 
 
+** Conventional commits
+
+https://www.conventionalcommits.org/
+
+It's a good practice.
+
+
