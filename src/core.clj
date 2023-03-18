@@ -5,6 +5,7 @@
   (:require [clojure.java.io :as io])
   (:require [clojure.string :as s])
   (:require [clojure.tools.reader.edn :as edn])
+  (:require [lambdaisland.regal :as regal])
   )
 
 
