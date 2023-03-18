@@ -483,3 +483,33 @@ To me =feat= is for finishing an actual feature.
 
 
 
+** Regural expressions
+
+Trying out https://github.com/lambdaisland/regal
+It's fantastic. Here's a snippet from the code, it's much more readable than actual regex compiled from it or written manually: 
+
+#+begin_src clojure
+(regal/regex [:cat          ; ws is whitespaces, defined outside
+              :start 
+              wn     "#+name:" ws "front-matter"     ws :line-break
+              wn     "#+begin_src" ws "clojure"      ws :line-break
+              [:capture front-matter-edn]               :line-break
+              ws     "#+end_src"                     ws :line-break
+              [:capture body]])
+;; => 
+#+end_src
+
+It's for capturing front-matter-edn and body from files:
+
+#+begin_src example
+;; #+name: front-matter   
+;; #+begin_src clojure 
+;; {whatever}
+;; #+end_src
+;; * hello world
+;; =>
+;; [ "{whatever}", "* hello world" ]
+#+end_src
+
+Forget about escaping in strings, it does this for you.
+
