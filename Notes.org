@@ -37,6 +37,8 @@ Its ouput contains warnings and it adds proper html5 body and headers, but that'
 
 It takes more than a second to convert one org file. The good news is we can have a pool of emacs instances to convert in parallel.
 
++-** TODO measure how slow it is to convert org to html via emacsclient :emacs:-+
+
 
 **** Performance tuning of export
 

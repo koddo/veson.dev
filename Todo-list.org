@@ -23,10 +23,7 @@ These warnings occur on =(require 'org-extra-emphasis)=:
 
 ** TODO convert multiple org files at once                            :emacs:
 
-
-
-** TODO measure how slow it is to convert org to html via emacsclient :emacs:
-
+** TODO run profiler on export of org files                           :emacs:
 
 ** TODO convert old commits to conventional commits               :maybe:git:
 
