@@ -1,3 +1,9 @@
+#+name: front-matter
+#+begin_src clojure
+{
+ :title "another test"
+ }
+#+end_src
 
-* test
+* another test page
 
