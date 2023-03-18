@@ -3,4 +3,5 @@
 .cider-repl-history
 .nrepl-port
 
-.my-intermediate-results
+/.my-intermediate-results
+/output
