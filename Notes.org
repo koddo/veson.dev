@@ -38,6 +38,18 @@ Its ouput contains warnings and it adds proper html5 body and headers, but that'
 It takes more than a second to convert one org file. The good news is we can have a pool of emacs instances to convert in parallel.
 
 
+**** Performance tuning of export
+
+https://bastibe.de/2014-05-07-speeding-up-org-publishing.html
+
+Try running profiler: (progn (profiler-start 'cpu) (org-publish "blog") (profiler-report))
+
+And disabling vc:
+(remove-hook 'find-file-hooks 'vc-find-file-hook)
+(setq vc-handled-backends nil) 
+
+
+
 *** Option: use a package called org-export
 
 https://github.com/nhoffman/org-export
