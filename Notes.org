@@ -460,8 +460,26 @@ emacsclient --socket-name='...' --eval '(kill-emacs)'
 
 ** Conventional commits
 
-https://www.conventionalcommits.org/
+https://www.conventionalcommits.org/ -- it's a good practice.
 
-It's a good practice.
+What I use here:
+
+- =feat=
+- =add= -- something smaller than a feature, like a function
+- =fix=
+- =refactor=
+- =revert=
+- =style= -- for formatting code with no changes
+- =test=
+- =docs= -- with these tags in scope: readme, adr, comments
+- =note= -- add-only log notes
+- =chore= -- misc, e.g., modifying =.gitignore=
+- =trash= -- I commit a lot of things in =(comment)= blocks
+
+
+  
+I use =add=, because there are other granular types like =fix= and =refactor=. Can be part of a feature.
+To me =feat= is for finishing an actual feature.
+
 
 
