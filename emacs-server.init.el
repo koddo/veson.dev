@@ -4,6 +4,8 @@
 (add-to-list 'load-path (expand-file-name "org-extra-emphasis"))
 (require 'org-extra-emphasis)
 
+(remove-hook 'find-file-hooks 'vc-find-file-hook)
+(setq vc-handled-backends nil) 
 
 ;; https://orgmode.org/manual/Publishing-options.html
 (defun my-configuration ()
