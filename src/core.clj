@@ -20,12 +20,59 @@
   (slurp "blog/test-entry.org")
 
   (convert-org-str-to-html-str "* hello world\n\n** foobar\n\n\n")
+  (defn pages-unprocessed [stasis-struct]
+    (for [[filename file-contents-string]
+          stasis-struct]
+      (let [[_ front-matter-edn body-org] (re-matches front-matter-and-body-regex file-contents-string)]
+        {:filename filename
+         :front-matter-edn front-matter-edn
+         :body-org body-org})))
+
+  (defn process-pages [pages-unprocessed]
+    (for [{:keys [filename front-matter-edn body-org] :as p} pages-unprocessed]
+      (assoc p
+             :filename-export (s/replace filename #"\.org$" ".html")
+             :front-matter (edn/read-string front-matter-edn)
+             :body-html (convert-org-str-to-html-str body-org))))
+  
+  
+  (let [all-pages (pages-unprocessed (stasis/slurp-directory "blog" #".*\.org$"))
+        broken-pages (for [p all-pages
+                           :when (nil? (:front-matter-edn p))]
+                       p)]
+    (if-not (empty? broken-pages)
+      (str "Can't recognize front matter in these files: " (seq broken-pages))
+      (process-pages all-pages)
+      ))
 
   (edn/read-string "")
   (edn/read-string "1")
   (edn/read-string "{:a 1}")
   
   )
+
+;; example
+;; #+name: front-matter   
+;; #+begin_src clojure 
+;; {whatever}
+;; #+end_src
+;; * hello world
+;; =>
+;; [ _ "{whatever}" "* hello world" ]
+
+(def front-matter-and-body-regex
+  (let [any-string [:* [:alt :any :line-break]]           ; ".*" -- but the dot here doesn't match newlines, so we have to take care of this
+        front-matter-edn  any-string
+        body              any-string
+        ws [:* :whitespace]                               ; I don't want it to break because of stray spaces in the front matter
+        wn [:* [:alt :whitespace :line-break]]]
+    (regal/regex [:cat
+                  :start
+                  wn     "#+name:" ws "front-matter"     ws :line-break
+                  wn     "#+begin_src" ws "clojure"      ws :line-break
+                  [:capture front-matter-edn]               :line-break
+                  ws     "#+end_src"                     ws :line-break
+                  [:capture body]])))
 
 (defn emacsclient-my-convert-org-to-html [file-path]
   (sh/sh "nix-shell" "--run"
