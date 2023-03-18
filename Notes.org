@@ -52,12 +52,16 @@ And disabling vc:
 
 
 
-*** Option: use a package called org-export
+*** Option: use a package called org-export, or org-page
 
 https://github.com/nhoffman/org-export
 
 It converts a single file though, it's just an alternative to =emacs --script=.
 Converting multiple files would be as slow.
+
+or
+
+https://github.com/emacsorphanage/org-page
 
 
 *** Option: Use an external exporter of org files
