@@ -15,11 +15,7 @@
   (sh/sh "nix-shell" "--run" "cat blog/test-entry.org | ./convert-org-from-stdin.el")
   (sh/sh "nix-shell" "--run" "cat blog/test-entry.org | ./convert-org-from-stdin.el | tidy --indent auto --show-body-only yes --quiet yes")
 
-  (keys
-   (stasis/slurp-directory "blog" #".*\.org$"))
-  (slurp "blog/test-entry.org")
 
-  (convert-org-str-to-html-str "* hello world\n\n** foobar\n\n\n")
   (defn pages-unprocessed [stasis-struct]
     (for [[filename file-contents-string]
           stasis-struct]
@@ -44,12 +40,8 @@
       (str "Can't recognize front matter in these files: " (seq broken-pages))
       (process-pages all-pages)
       ))
-
-  (edn/read-string "")
-  (edn/read-string "1")
-  (edn/read-string "{:a 1}")
   
-  )
+    )  
 
 ;; example
 ;; #+name: front-matter   
