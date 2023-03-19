@@ -62,11 +62,11 @@
 ;; [ _ "{whatever}" "* hello world" ]
 
 (def front-matter-and-body-regex
-  (let [any-string [:* [:alt :any :line-break]]           ; ".*" -- but the dot here doesn't match newlines, so we have to take care of this
-        front-matter-edn  any-string
-        body              any-string
-        ws [:* :whitespace]                               ; I don't want it to break because of stray spaces in the front matter
-        wn [:* [:alt :whitespace :line-break]]]
+  (let [     ; patterns below are similar to ".*" -- but the dot here doesn't match newlines, so we have to take care of this
+        front-matter-edn  [:*? [:alt :any :line-break]]    ; lazily match, otherwise multiple front matters in a row match as one huge front matter
+        body              [:*  [:alt :any :line-break]]    ; greedily here 
+        ws [:* :whitespace]
+        wn [:* [:alt :whitespace :line-break]]]    ; I don't want it to break because of stray spaces or newlines in the front matter
     (regal/regex [:cat
                   :start
                   wn     "#+name:" ws "front-matter"     ws :line-break
