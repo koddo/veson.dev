@@ -6,6 +6,7 @@
   (:require [clojure.string :as s])
   (:require [clojure.tools.reader.edn :as edn])
   (:require [lambdaisland.regal :as regal])
+  (:require [net.cgrand.enlive-html :as e])
   )
 
 
