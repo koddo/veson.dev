@@ -41,6 +41,12 @@
       (str "Can't recognize front matter in these files: " (seq broken-pages))
       (process-pages all-pages)
       ))
+
+  (e/deftemplate post-template "post.html" []
+    [:head :title] (e/content "my title")
+    [:#replace-me-with-actual-content] (e/substitute (e/html-snippet "<p>my content</p>")))
+  ;; (print (apply str (post-template)))
+
   
     )  
 
