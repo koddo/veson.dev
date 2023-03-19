@@ -6,6 +6,8 @@
   (:require [clojure.string :as s])
   (:require [clojure.tools.reader.edn :as edn])
   (:require [lambdaisland.regal :as regal])
+  (:require [nrepl.server :as nrepl-server]
+            [cider.nrepl :refer (cider-nrepl-handler)])
   (:require [net.cgrand.enlive-html :as e])
   )
 
@@ -107,4 +109,8 @@
 (defn -main
   "Invoke me with clojure -M -m core"
   [& args]
-  (println "-main with" args))
+  (println (nrepl-server/start-server
+            ;; :port 7888
+            :handler cider-nrepl-handler))
+  (println "-main with" args)
+  )
