@@ -55,6 +55,12 @@ module.exports = function(eleventyConfig) {
         }
     });
 
+    // copy images to the same place in hierarcy, so that we can use them directly
+    // otherwise we're forced to use shortcodes for images
+    // like {% image ... %}instead of usual markdown sytax ![caption](link)
+    eleventyConfig.addPassthroughCopy("**/*.jpg");
+    eleventyConfig.addPassthroughCopy("**/*.png");
+
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
 	eleventyConfig.addPassthroughCopy({
