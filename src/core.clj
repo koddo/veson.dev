@@ -75,7 +75,7 @@
                   ws     "#+end_src"                     ws :line-break
                   [:capture body]])))
 
-(defn emacsclient-my-convert-org-to-html [file-path]
+(defn convert-org-to-html-using-emacsclient [file-path]
   (sh/sh "nix-shell" "--run"
          (str "emacsclient --socket-name='/run/user/1001/tmp.p5cJesu4Gb' --eval "
               "'(my-convert-org-to-html \"" file-path "\")'")))
@@ -91,7 +91,7 @@
          the-html-result-path (s/replace temp-file #"\.org$" ".html")
          the-html-result-file (io/file the-html-result-path)]
      (spit temp-file content)
-     (emacsclient-my-convert-org-to-html temp-abspath)
+     (convert-org-to-html-using-emacsclient temp-abspath)
      (let [the-html-result-str (slurp the-html-result-file)]
        (.delete temp-file)
        (.delete the-html-result-file)
