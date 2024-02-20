@@ -17,6 +17,24 @@ const nodePandoc = util.promisify(nodePandoc_);
 const markdownIt = require("markdown-it");
 
 module.exports = function(eleventyConfig) {
+    let options = {
+        html: true,       // this is default configuration of markdown-it in 11ty
+    };
+    const myMarkdownIt = markdownIt(options);    // save it for later use in the org extension
+    eleventyConfig.setLibrary("md", myMarkdownIt);
+
+    eleventyConfig.addTemplateFormats('org')
+    eleventyConfig.addExtension('org', {
+        compile: async (inputContent, inputPath) => {
+            const markdownContent = await nodePandoc(inputContent, "-f org -t gfm");
+            // console.log(markdownContent);
+            const htmlContent = await myMarkdownIt.render(markdownContent);
+            return async () => {
+                return htmlContent;
+            }
+        }
+    });
+
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
 	eleventyConfig.addPassthroughCopy({
