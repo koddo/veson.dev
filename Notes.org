@@ -519,3 +519,17 @@ It's for capturing front-matter-edn and body from files:
 
 Forget about escaping in strings, it does this for you.
 
+
+** Template engine: enlive
+
+Options are: enlive, hickory, jsoup.
+Actually enlive and hickory are built upon jsoup, which is ok to use without any wrappers if you want to parse html.
+
+But for templating I choose enlive, it has quite a lot of useful abstcations for this.
+Albeit it's slow, probably because of persistent datastructures, but that's ok for a blog.
+
+https://github.com/cgrand/enlive
+https://github.com/clj-commons/hickory
+https://jsoup.org/
+
+
