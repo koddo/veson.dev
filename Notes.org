@@ -533,3 +533,51 @@ https://github.com/clj-commons/hickory
 https://jsoup.org/
 
 
+** html-tidy
+
+Apparently, the =html-tidy= tool can be used a library called =libtidy=, I'll deal with this later, and for now I do the following:  
+
+#+begin_src
+cd output
+find . -name '*.html' -type f -print -exec tidy -indent -modify -quiet '{}' \;
+#+end_src
+
+
+https://www.html-tidy.org/documentation/
+https://api.html-tidy.org/#part_apiref
+
+
+*** Option: JTidy
+
+JTidy is a port of html-tidy, and it's fine, but I'd like to stick to a more popular tool for html5.
+
+
+
+*** How to configure org-publish to export good html
+
+How to adjust HTML elements using org-publish in Emacs
+https://emacs.stackexchange.com/questions/76599/how-to-adjust-html-elements-using-org-publish-in-emacs
+
+quote:
+
+<div id="preamble" class="status">...</div>
+<div id="content" class="content">...</div>
+<div id="postamble" class="status">...</div>
+
+however I want to change the divs to a more semantic markup such as this:
+
+<header id="preamble">...</header>
+<main id="content">...</main>
+<footer id="postamble">...</footer>
+
+
+
+also, there's a possibility of configure it heavily:
+https://notes.alex-miller.co/publish/
+
+
+
+
+see https://github.com/fniessen/org-html-themes
+
+
