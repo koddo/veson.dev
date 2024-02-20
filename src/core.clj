@@ -29,28 +29,61 @@
 
   (defn process-pages [pages-unprocessed]
     (for [{:keys [filename front-matter-edn body-org] :as p} pages-unprocessed]
-      (assoc p
+      (let [front-matter (edn/read-string front-matter-edn)
+            body-html (convert-org-str-to-html-str body-org)
+            html (post-template (:title front-matter) body-html)]
+       (assoc p
              :filename-export (s/replace filename #"\.org$" ".html")
-             :front-matter (edn/read-string front-matter-edn)
-             :body-html (convert-org-str-to-html-str body-org))))
-  
-  
-  (let [all-pages (pages-unprocessed (stasis/slurp-directory "blog" #".*\.org$"))
-        broken-pages (for [p all-pages
-                           :when (nil? (:front-matter-edn p))]
-                       p)]
-    (if-not (empty? broken-pages)
-      (str "Can't recognize front matter in these files: " (seq broken-pages))
-      (process-pages all-pages)
+             :front-matter front-matter
+             :body-html body-html
+             :html html
+             ))
       ))
+  
+  
 
-  (e/deftemplate post-template "post.html" []
-    [:head :title] (e/content "my title")
-    [:#replace-me-with-actual-content] (e/substitute (e/html-snippet "<p>my content</p>")))
-  ;; (print (apply str (post-template)))
+  (e/deftemplate post-template "post.html" [title body]
+    [:head :title] (e/content title)
+    [:#replace-me-with-actual-content] (e/substitute (e/html-snippet body)))
+  ;; (print (apply str (post-template "my title" "body")))
+
+
+
+  (defn final-pipeline []
+    (let [all-pages (pages-unprocessed (stasis/slurp-directory "blog" #".*\.org$"))
+          broken-pages (for [p all-pages
+                             :when (nil? (:front-matter-edn p))]
+                         p)]
+      (if-not (empty? broken-pages)
+        (str "Can't recognize front matter in these files: " (seq broken-pages))
+        (process-pages all-pages)
+        ))
+    )
+
+
+  (print (apply str (:html (first
+                            (final-pipeline)q
+                            ))))
+
+
+  (defn stasis-compatible-map [l]
+    (into {}
+          (for [{:keys [filename-export html] :as e} l]
+            {
+             filename-export
+             (apply str html)
+             }
+            ))
+    )
+  
+
+  (let [target-dir "output"]
+    (stasis/empty-directory! target-dir)
+    (stasis/export-pages (stasis-compatible-map (final-pipeline)) target-dir))
 
   
-    )  
+  
+  )
 
 ;; example
 ;; #+name: front-matter   
