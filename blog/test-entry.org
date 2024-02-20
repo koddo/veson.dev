@@ -1,7 +1,7 @@
 #+name: front-matter
 #+begin_src clojure
 {
- :title "hello world"
+ :title "hello world title"
  }
 #+end_src
 
@@ -9,3 +9,4 @@
 
 ** foobar
 
+my first text published here
