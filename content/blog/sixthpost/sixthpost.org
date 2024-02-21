@@ -1,54 +1,57 @@
+
 #+title: Example Org Mode Title
 #+date: <2023-07-17 Mon>
 #+tags: tag one, tag two, tag three
 
-This org-mode src block is run and has results, but they are not rendered.
+This org-mode src block is run and has results.
 
+#+name: my-bash-block
 #+begin_src bash :wrap example
 echo hello
 #+end_src
 
-#+RESULTS:
+Results:
+
+#+RESULTS: my-bash-block
 #+begin_example
 hello
 #+end_example
 
+Another src block, now in elisp. 
 
+#+name: my-elisp-block
+#+BEGIN_SRC elisp :wrap example :exports both
+(message "Hello, World!")
+#+END_SRC
 
-A similar block without the resuls header does get rendered.
+Output:
+
+#+results: my-elisp-block
+#+begin_example
+Hello, World!
+#+end_example
+
+Source blocks without specified language get rendered as a quote. Just let it be an src block of text-mode.
+
+#+BEGIN_SRC text
+just some text
+#+END_SRC
+
+Here's not an src, but an example block, looks exacly the same:
 
 #+begin_example
 example text
 #+end_example
 
-Another src block, now in elisp. Results are not rendered 
-
-#+BEGIN_SRC elisp :wrap example
-(message "Hello, World!")
-#+END_SRC
-
-#+RESULTS:
-#+begin_example
-Hello, World!
-#+end_example
-
-
-
-
-Source blocks without specified language get rendered as a quote. Just let it be an src block of text or example.
-
-#+BEGIN_SRC text
-asdf
-#+END_SRC
-
-Here's an awe somepossum.
+Here's an awesome possum.
 
 #+CAPTION: awesome possum
-[[file:./possum.png]]
+[[file:possum.png]]
 
-And here's a table. It gets rendered without borders in this template even for markdown for some reason.
+And here's a table. It gets rendered without borders in this template even in markdown for some reason. But that's easy to fix in css.
 
 | Header  1 | Header  2 |
 |-----------+-----------|
 | Cell  1   | Cell  2   |
 | Cell  3   | Cell  4   |
+
