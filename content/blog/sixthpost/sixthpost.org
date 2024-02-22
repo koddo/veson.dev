@@ -3,7 +3,7 @@
 #+date: <2023-07-17 Mon>
 #+tags: tag one, tag two, tag three
 
-This org-mode src block is run and has results.
+This org-mode src block has been run and has results.
 
 #+name: my-bash-block
 #+begin_src bash :wrap example
@@ -31,7 +31,7 @@ Output:
 Hello, World!
 #+end_example
 
-Source blocks without specified language get rendered as a quote. Just let it be an src block of text-mode.
+Source blocks without specified language get rendered as a quote, which is undesirable. Just let it be an src block of text-mode.
 
 #+BEGIN_SRC text
 just some text
