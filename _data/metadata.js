@@ -1,11 +1,11 @@
 module.exports = {
-	title: "Eleventy Base Blog v8",
-	url: "https://example.com/",
+	title: "hell-o-world",
+	url: "https://koddo.github.io/veson.dev/",
 	language: "en",
-	description: "I am writing about my experiences as a naval navel-gazer.",
+	description: "Nothing to see here yet.",
 	author: {
 		name: "Your Name Here",
 		email: "youremailaddress@example.com",
-		url: "https://example.com/about-me/"
+		url: "https://koddo.github.io/veson.dev/about-me/"
 	}
 }
