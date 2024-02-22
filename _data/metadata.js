@@ -1,11 +1,11 @@
 module.exports = {
-	title: "hell-o-world",
-	url: "https://koddo.github.io/veson.dev/",
+	title: "veson.dev",
+	url: "https://veson.dev/",
 	language: "en",
-	description: "Nothing to see here yet.",
+	// description: "no description yet",
 	author: {
-		name: "Your Name Here",
-		email: "youremailaddress@example.com",
-		url: "https://koddo.github.io/veson.dev/about-me/"
+		name: "Alejandro",
+		// email: "",
+		url: "https://veson.dev/about-me/"
 	}
 }
