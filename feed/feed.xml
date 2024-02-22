@@ -16,7 +16,7 @@
 		<link href="https://koddo.github.io/blog/sixthpost/"/>
 		<updated>2023-07-17T00:00:00Z</updated>
 		<id>https://koddo.github.io/blog/sixthpost/</id>
-		<content type="html">&lt;p&gt;This org-mode src block is run and has results.&lt;/p&gt;
+		<content type="html">&lt;p&gt;This org-mode src block has been run and has results.&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; hello&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Results:&lt;/p&gt;
 &lt;pre class=&quot;language-example&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-example&quot;&gt;hello&lt;/code&gt;&lt;/pre&gt;
@@ -24,8 +24,8 @@
 &lt;pre class=&quot;language-elisp&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-elisp&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Hello, World!&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Output:&lt;/p&gt;
 &lt;pre class=&quot;language-example&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-example&quot;&gt;Hello, World!&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Source blocks without specified language get rendered as a quote. Just
-let it be an src block of text-mode.&lt;/p&gt;
+&lt;p&gt;Source blocks without specified language get rendered as a quote, which
+is undesirable. Just let it be an src block of text-mode.&lt;/p&gt;
 &lt;pre class=&quot;language-text&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;just some text&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here&#39;s not an src, but an example block, looks exacly the same:&lt;/p&gt;
 &lt;pre class=&quot;language-example&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-example&quot;&gt;example text&lt;/code&gt;&lt;/pre&gt;
