@@ -8,8 +8,7 @@
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="veson.dev">
 		<link rel="alternate" href="/feed/feed.json" type="application/json" title="veson.dev">
 		
-		<style>.postlist { counter-reset: start-from 6 }
-* { box-sizing: border-box; }
+		<style>* { box-sizing: border-box; }
 /* Defaults */
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
@@ -279,6 +278,22 @@ a[href].header-anchor:focus,
 
 h2 + .header-anchor {
 	font-size: 1.5em;
+}
+
+
+/* from https://www.zachleat.com/web/fluid-images/ */
+/* and https://alexpeterhall.com/blog/2021/04/05/responsive-images-eleventy/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto; /* Preserve aspect ratio */
+}
+/* Let SVG scale without boundaries */
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
 }</style>
 	</head>
 	<body>
@@ -290,7 +305,7 @@ h2 + .header-anchor {
 				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">
 					<li class="nav-item"><a href="/" aria-current="page">Home</a></li>
-					<li class="nav-item"><a href="/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/blog/">Blog</a></li>
 					<li class="nav-item"><a href="/about/">About Me</a></li>
 				</ul>
 			</nav>
@@ -300,38 +315,8 @@ h2 + .header-anchor {
 			
 
 
-<h1>Latest 3 Posts</h1>
 
-
-
-
-<ol reversed class="postlist">
-
-	<li class="postlist-item">
-		<a href="/blog/sixthpost/" class="postlist-link">Example Org Mode Title</a>
-		<time class="postlist-date" datetime="2023-07-17">July 2023</time>
-	</li>
-
-	<li class="postlist-item">
-		<a href="/blog/fourthpost/" class="postlist-link">This is my fourth post.</a>
-		<time class="postlist-date" datetime="2018-09-30">September 2018</time>
-	</li>
-
-	<li class="postlist-item">
-		<a href="/blog/thirdpost/" class="postlist-link">This is my third post.</a>
-		<time class="postlist-date" datetime="2018-08-24">August 2018</time>
-	</li>
-
-</ol>
-
-
-
-
-<p>2 more posts can be found in <a href="/blog/">the archive</a>.</p>
-
-
-
-
+Hello world!
 
 
 		</main>
