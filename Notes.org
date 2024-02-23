@@ -97,6 +97,15 @@ https://emacs.love/weblorg/
 https://pavpanchekha.com/blog/org-mode-publish.html
 
 
+
+*** Option: pandoc: org->html or org->gfm->html
+
+With pandoc we can use pretty much anything that understand markdown.
+More than that, pandoc allows user-provided filters that give access to AST of documents.
+With this we can do pretty much anything.
+
+
+
 ** Convert multiple files at once                                     :emacs:
 
 Motivation: starting a separate emacs instance for each file to convert is slow.
