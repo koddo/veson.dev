@@ -590,3 +590,10 @@ https://notes.alex-miller.co/publish/
 see https://github.com/fniessen/org-html-themes
 
 
+* Hosting providers
+
+** github pages
+
+Apparently github pages needs the CNAME file in the github pages branch of a repo after I configured it to work with my custom domain. Added a reminder file called CNAME-dont-delete-it in the folder next to the CNAME file itself.
+
+
