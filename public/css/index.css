@@ -268,3 +268,19 @@ a[href].header-anchor:focus,
 h2 + .header-anchor {
 	font-size: 1.5em;
 }
+
+
+/* from https://www.zachleat.com/web/fluid-images/ */
+/* and https://alexpeterhall.com/blog/2021/04/05/responsive-images-eleventy/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto; /* Preserve aspect ratio */
+}
+/* Let SVG scale without boundaries */
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
