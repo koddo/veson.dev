@@ -1,3 +1,18 @@
 
-empty so far
+* eleventy-base-blog
+
+I configured https://github.com/11ty/eleventy-base-blog so that it renders org files using pandoc.
+
+** Updates 
+
+Add a remote named eleventy-base-blog--updates that points to https://github.com/11ty/eleventy-base-blog and merge into 11ty.
+
+
+
+
+
+
+* Todo
+
+- [ ] Description is commented out temporarily, I haven't decided what it should be.
 
