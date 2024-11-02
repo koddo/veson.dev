@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	title: "veson.dev",
 	url: "https://veson.dev/",
 	language: "en",

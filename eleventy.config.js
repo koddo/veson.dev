@@ -6,11 +6,11 @@ import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
 
-let fs = require('fs');
-const util = require('util');
-const nodePandoc_ = require('node-pandoc');
+import fs from "fs";
+import util from "util";
+import nodePandoc_ from "node-pandoc";
 const nodePandoc = util.promisify(nodePandoc_);
-const markdownIt = require("markdown-it");
+import markdownIt from "markdown-it";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
