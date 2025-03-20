@@ -8,7 +8,7 @@ I configured https://github.com/11ty/eleventy-base-blog so that it renders org f
 * How to run
 
 podman build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t my-11ty .
-podman run --userns=keep-id -it --rm -p 8080:8080 --volume $(pwd):/home/theuser/blog my-11ty bash -l
+podman run --userns=keep-id -it --rm -p 8080:8080 --volume $(pwd):/home/node/blog my-11ty bash -l
 
 
 
