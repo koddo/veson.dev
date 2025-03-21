@@ -37,6 +37,7 @@ export default async function(eleventyConfig) {
                 return htmlContent;
             }
         },
+        compileOptions: { permalink: "raw" },
         getData: true,
         getInstanceFromInputPath: async (inputPath) => {
             let data = {};
