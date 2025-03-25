@@ -22,3 +22,5 @@ USER node
 RUN mkdir /home/node/blog
 WORKDIR /home/node/blog
 
+RUN npm install @11ty/eleventy
+RUN echo "npx @11ty/eleventy --serve" >> ~/.bash_history
