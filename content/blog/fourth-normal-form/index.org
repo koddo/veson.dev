@@ -8,7 +8,7 @@
 
 For some reason 4NF is widely considered obscure, unimportant, rarely encountered, impractical, while 3NF is regarded as [[https://stackoverflow.com/questions/6625569/what-is-the-level-of-database-normalization-that-is-practically-enough][enough]]. I'm not sure where this misunderstanding comes from. I'm not even exaggerating, it's an old issue, here's a paper from 1992: [[https://dl.acm.org/doi/10.1145/134510.134515]["The practical need for fourth normal form"]].
 
-If I were to write a database course, I'd start with 4NF, as it's the easieast one of them all, it can be explained visually by showing drop-down lists on an html form, where /the first field determines what's shown in other options/.
+If I were to write a database course, I'd start with 4NF, as it's the easiest one of them all, it can be explained visually by showing drop-down lists on an html form, where /the first field determines what's shown in other options/.
 
 ** Unnecessary combinations
 
@@ -237,7 +237,7 @@ Sometimes presented like this, which is cryptic, these combinations make no sens
 </table>
 #+end_export
 
-No one in their right mind would ever design a table like this. Yet this is discussed in some guides, and surprizingly or not, but there is a reason why, which is never given though, and as it happens, it's historical. The following great blog post sheds light: [[https://www.cargocultcode.com/normalization-is-not-a-process/]["Normalization is not a process"]].
+No one in their right mind would ever design a table like this. Yet this is discussed in some guides, and surprisingly or not, but there is a reason why, which is never given though, and as it happens, it's historical. The following great blog post sheds light: [[https://www.cargocultcode.com/normalization-is-not-a-process/]["Normalization is not a process"]].
 
 Basically, tables like this are artifacts of a particular process, which is taught in traditional courses, often without a clear explanation why it is taught at all.
 
