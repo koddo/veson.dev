@@ -24,7 +24,7 @@ exaggerating, it&#39;s an old issue, here&#39;s a paper from 1992: &lt;a href=&q
 practical need for fourth normal
 form&amp;quot;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If I were to write a database course, I&#39;d start with 4NF, as it&#39;s the
-easieast one of them all, it can be explained visually by showing
+easiest one of them all, it can be explained visually by showing
 drop-down lists on an html form, where &lt;em&gt;the first field determines
 what&#39;s shown in other options&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;unnecessary-combinations&quot;&gt;Unnecessary combinations&lt;/h2&gt;
@@ -236,7 +236,7 @@ no sense:&lt;/p&gt;
     &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;No one in their right mind would ever design a table like this. Yet this
-is discussed in some guides, and surprizingly or not, but there is a
+is discussed in some guides, and surprisingly or not, but there is a
 reason why, which is never given though, and as it happens, it&#39;s
 historical. The following great blog post sheds light: &lt;a href=&quot;https://www.cargocultcode.com/normalization-is-not-a-process/&quot;&gt;&amp;quot;Normalization
 is not a
