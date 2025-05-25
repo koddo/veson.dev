@@ -1,0 +1,16 @@
+.my-table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    border: 1px #ddd solid;
+}
+.my-table th, td {
+    font-weight: normal;
+    text-align: center;
+}
+
+.my-img-centered {
+    display: block; margin-left: auto; margin-right: auto;
+}
