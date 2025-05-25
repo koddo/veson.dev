@@ -65,6 +65,7 @@ export default async function(eleventyConfig) {
     // like {% image ... %}instead of usual markdown sytax ![caption](link)
     eleventyConfig.addPassthroughCopy("./content/**/*.jpg");
     eleventyConfig.addPassthroughCopy("./content/**/*.png");
+    eleventyConfig.addPassthroughCopy("./content/**/*.css");
 
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
