@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Fourth normal form</title>
+		
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="veson.dev">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	/* content: "" counter(start-from, decimal-leading-zero) ". "; */
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	/* padding-left: .25em; */
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}
+
+
+/* from https://www.zachleat.com/web/fluid-images/ */
+/* and https://alexpeterhall.com/blog/2021/04/05/responsive-images-eleventy/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto; /* Preserve aspect ratio */
+}
+/* Let SVG scale without boundaries */
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">veson.dev</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Blog</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1 id="fourth-normal-form">Fourth normal form</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2025-05-25">25 May 2025</time></li>
+	<li><a href="/tags/databases/" class="post-tag">Databases</a></li>
+</ul>
+
+<link rel="stylesheet" href="local-styles.css">
+<p>For some reason 4NF is widely considered obscure, unimportant, rarely
+encountered, impractical, while 3NF is regarded as
+<a href="https://stackoverflow.com/questions/6625569/what-is-the-level-of-database-normalization-that-is-practically-enough">enough</a>.
+I'm not sure where this misunderstanding comes from. I'm not even
+exaggerating, it's an old issue, here's a paper from 1992: <a href="https://dl.acm.org/doi/10.1145/134510.134515">&quot;The
+practical need for fourth normal
+form&quot;</a>.</p>
+<p>If I were to write a database course, I'd start with 4NF, as it's the
+easieast one of them all, it can be explained visually by showing
+drop-down lists on an html form, where <em>the first field determines
+what's shown in other options</em>.</p>
+<h2 id="unnecessary-combinations">Unnecessary combinations</h2>
+<p>Let's say we have a page for students to choose a course, an instructor,
+and available languages. The options could look like this when you
+choose databases:</p>
+<img src="2025-05-24_21-06-37_screenshot.png" class="my-img-centered">
+<p>The corresponding table would be:</p>
+<table class="my-table">
+    <thead>
+        <tr>
+            <th>Course</th>
+            <th>Instructor</th>
+            <th>Language</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Databases</td>
+            <td>Jamie</td>
+            <td>English</td>
+        </tr>
+        <tr>
+            <td>Databases</td>
+            <td>Jamie</td>
+            <td>German</td>
+        </tr>
+        <tr>
+            <td>Databases</td>
+            <td>Cody</td>
+            <td>English</td>
+        </tr>
+        <tr>
+            <td>Databases</td>
+            <td>Cody</td>
+            <td>German</td>
+        </tr>
+    </tbody>
+</table>
+<p>Or we could break it down and let students choose an instructor and a
+language separately:</p>
+<img src="2025-05-24_21-13-22_screenshot.png" class="my-img-centered">
+<p>The tables would be:</p>
+<table class="my-table">
+    <thead>
+        <tr>
+            <th>Course</th>
+            <th>Instructor</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Databases</td>
+            <td>Jamie</td>
+        </tr>
+        <tr>
+            <td>Databases</td>
+            <td>Cody</td>
+        </tr>
+    </tbody>
+</table>
+<table class="my-table">
+    <thead>
+        <tr>
+            <th>Course</th>
+            <th>Language</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Databases</td>
+            <td>English</td>
+        </tr>
+        <tr>
+            <td>Databases</td>
+            <td>German</td>
+        </tr>
+    </tbody>
+</table>
+<p>But what if you choose philosophy, and teaching it is too hard in a
+foreigh language? Kris can only do it in English, and Sophia only in
+French:</p>
+<img src="2025-05-24_21-16-04_screenshot.png" class="my-img-centered">
+<p>The corresponding part of the table would be:</p>
+<table class="my-table">
+    <thead>
+        <tr>
+            <th>Course</th>
+            <th>Instructor</th>
+            <th>Language</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Philosophy</td>
+            <td>Kris</td>
+            <td>English</td>
+        </tr>
+        <tr>
+            <td>Philosophy</td>
+            <td>Sophia</td>
+            <td>French</td>
+        </tr>
+    </tbody>
+</table>
+<p>Then we can't break it down like we were going to before. If we did
+break it down, we would have to convey the information that, e.g.,
+Sophia doesn't teach philosophy in English some other way, like by
+showing an error message and politely asking to pick another option. Or
+we can decide to let students choose and listen to Kris and Sophia
+awkwardly philosophizing in their non-native languages.</p>
+<p>If we were talking about relations, this would be about whether or not
+to break down (course, instructor, language) into (course, instructor)
+and (course, language) in order to avoid having a lot of redundant
+combinations of instructors and languages in the table.</p>
+<p>That's all what 4NF is about: if we can break a relation down to avoid
+unnecessary combinations, then we should, because it's a 4NF violation.
+If we can't, then we shouldn't.</p>
+<h2 id="lots-of-combinations">Lots of combinations</h2>
+<p>The following example is slightly contrived, because in reality this
+would be much more complex and interesting, but it illustrates the
+point. If we were designing a schema for a sportswear store, we would
+probably end up with something like this:</p>
+<img src="2025-05-24_23-07-48_screenshot.png" class="my-img-centered">
+<p>And not this, which is bad UX and violates 4NF:</p>
+<img src="2025-05-24_21-28-34_screenshot.png" class="my-img-centered">
+<p>Here the relations would be (product, size) and (product, color) instead
+of (product, size, color), because the latter would have all the
+combinations of sizes and colors redundantly. Imagine the number of
+entries in this list if there were even more sizes and colors, and if we
+added printed image and other features to the relation.</p>
+<h2 id="maintaining-integrity">Maintaining integrity</h2>
+<p>Why do we even care about 4NF violation? Because, for example, changing
+an available color from green to yellow would have to be done in
+multiple rows instead of one.</p>
+<p>It doesn't seem like a big deal, but at larger scale maintaining
+integrity in application logic rather than in schema design is
+error-prone and without a reason should be avoided. Usually the reason
+is performance, but it has to be measured first before making
+trade-offs.</p>
+<h2 id="why-are-some-explanations-so-weird">Why are some explanations so weird?</h2>
+<p>Lastly, there are examples of 4NF violation that can be found in the
+internet that are outright weird and confusing, because they are taken
+out of context and teach nothing.</p>
+<p>Here are two absolutely independent lists that simply shouldn't be in
+one table side by side, namely student's courses and hobbies:</p>
+<table class="my-table">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Hobby</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Jason</td>
+            <td>Algorithms</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Jason</td>
+            <td>Databases</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Jason</td>
+            <td>Calculus</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Jason</td>
+            <td></td>
+            <td>Running</td>
+        </tr>
+        <tr>
+            <td>Jason</td>
+            <td></td>
+            <td>Photography</td>
+        </tr>
+    </tbody>
+</table>
+<p>Sometimes presented like this, which is cryptic, these combinations make
+no sense:</p>
+<table class="my-table">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Hobby</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Jason</td>
+            <td>Algorithms</td>
+            <td>Running</td>
+        </tr>
+        <tr>
+            <td>Jason</td>
+            <td>Databases</td>
+            <td>Running</td>
+        </tr>
+        <tr>
+            <td>Jason</td>
+            <td>Calculus</td>
+            <td>Photography</td>
+        </tr>
+    </tbody>
+</table>
+<p>No one in their right mind would ever design a table like this. Yet this
+is discussed in some guides, and surprizingly or not, but there is a
+reason why, which is never given though, and as it happens, it's
+historical. The following great blog post sheds light: <a href="https://www.cargocultcode.com/normalization-is-not-a-process/">&quot;Normalization
+is not a
+process&quot;</a>.</p>
+<p>Basically, tables like this are artifacts of a particular process, which
+is taught in traditional courses, often without a clear explanation why
+it is taught at all.</p>
+<p>Well, back in the day, when relational databases were first introduced,
+there had to be a way to migrate from existing hierarchical storage
+without losing information. It involves taking all the attributes that
+can be found in data, and putting them in one huge relation and then
+iteratively breaking it down into smaller relations until there's
+nothing to split. The process itself is fine and really useful in
+certain circumstances, but it's purely mechanistical and doesn't give
+any insights, and sometimes intermediate tables look like shown above
+before being broken down.</p>
+<p>We don't have to stick to this process when we don't migrate from
+hierarchical storage. When we design schemas, relations that just make
+sense turn out to be fine most of the time.</p>
+<h2 id="good-news">Good news</h2>
+<p>A lot of schemas are in 4NF unknowingly, because it's so intuitive to
+avoid unnecesary combinations.</p>
+<p>Another nice thing to know about 4NF is &quot;only in rare situations does a
+4NF table not conform to 5NF&quot;, quote from
+<a href="https://en.wikipedia.org/wiki/Fifth_normal_form#Usage">wikipedia</a>. One
+less thing to worry about.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I believe this and other misunderstandings can be cleared by providing
+better examples and restructuring courses.</p>
+<p>And I'm not sure 4NF is completely unimportant, because we use a simple
+theory that gives some guarantees about data integrity, and knowing its
+limits is not that unhelpful.</p>
+<p>P.S. I hope clicking on screenshots is not too frustrating haha.</p>
+
+<ul class="links-nextprev">
+</ul>
+
+			</heading-anchors>
+		</main>
+
+		<!-- This page `/blog/fourth-normal-form/` was built on 2025-05-25T21:37:24.236Z -->
+		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
+	</body>
+</html>

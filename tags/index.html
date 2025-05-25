@@ -5,10 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>veson.dev</title>
 		
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="veson.dev">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="veson.dev">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="veson.dev">
 		
-		<style>* { box-sizing: border-box; }
+		<style>/* This is an arbitrary CSS string added to the bundle */
 /* Defaults */
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
@@ -50,6 +49,10 @@
 /* Global stylesheet */
 * {
 	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
 }
 
 html,
@@ -100,7 +103,8 @@ a[href]:active {
 	color: var(--text-color-link-active);
 }
 
-main {
+main,
+footer {
 	padding: 1rem;
 }
 main :first-child {
@@ -117,9 +121,18 @@ header:after {
 }
 
 .links-nextprev {
-	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
 	border-top: 1px dashed var(--color-gray-20);
 	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
 }
 
 table {
@@ -148,6 +161,7 @@ pre:not([class*="language-"]) {
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
+	overflow-x: auto;
 }
 code {
 	word-break: break-all;
@@ -204,7 +218,7 @@ header {
 .postlist-item:before {
 	display: inline-block;
 	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
+	/* content: "" counter(start-from, decimal-leading-zero) ". "; */
 	line-height: 100%;
 	text-align: right;
 	margin-left: -1.5rem;
@@ -221,7 +235,7 @@ header {
 	font-size: 1.1875em; /* 19px /16 */
 	font-weight: 700;
 	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
+	/* padding-left: .25em; */
 	padding-right: .5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
@@ -236,7 +250,6 @@ header {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	text-transform: capitalize;
 	font-style: italic;
 }
 .postlist-item > .post-tag {
@@ -254,30 +267,6 @@ header {
 }
 .post-metadata time {
 	margin-right: 1em;
-}
-
-/* Direct Links / Markdown Headers */
-.header-anchor {
-	text-decoration: none;
-	font-style: normal;
-	font-size: 1em;
-	margin-left: .1em;
-}
-a[href].header-anchor,
-a[href].header-anchor:visited {
-	color: transparent;
-}
-a[href].header-anchor:focus,
-a[href].header-anchor:hover {
-	text-decoration: underline;
-}
-a[href].header-anchor:focus,
-:hover > a[href].header-anchor {
-	color: #aaa;
-}
-
-h2 + .header-anchor {
-	font-size: 1.5em;
 }
 
 
@@ -302,49 +291,31 @@ img[src$=".svg"] {
 		<header>
 			<a href="/" class="home-link">veson.dev</a>
 			<nav>
-				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
 					<li class="nav-item"><a href="/">Home</a></li>
 					<li class="nav-item"><a href="/blog/">Blog</a></li>
-					<li class="nav-item"><a href="/about/">About Me</a></li>
 				</ul>
 			</nav>
 		</header>
 
 		<main id="skip">
-			
-<h1>Tags</h1>
+			<heading-anchors>
+				
+<h1 id="tags">Tags</h1>
 
 <ul>
 
 	
-	<li><a href="/tags/another-tag/" class="post-tag">another tag</a></li>
-
-	
-	<li><a href="/tags/number-2/" class="post-tag">number 2</a></li>
-
-	
-	<li><a href="/tags/second-tag/" class="post-tag">second tag</a></li>
-
-	
-	<li><a href="/tags/posts-with-two-tags/" class="post-tag">posts with two tags</a></li>
-
-	
-	<li><a href="/tags/tag-one/" class="post-tag">tag one</a></li>
-
-	
-	<li><a href="/tags/tag-two/" class="post-tag"> tag two</a></li>
-
-	
-	<li><a href="/tags/tag-three/" class="post-tag"> tag three</a></li>
+	<li><a href="/tags/databases/" class="post-tag">Databases</a></li>
 
 </ul>
 
 
+			</heading-anchors>
 		</main>
 
-		<footer></footer>
-
-		<!-- Current page: /tags/ -->
+		<!-- This page `/tags/` was built on 2025-05-25T21:37:24.236Z -->
+		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

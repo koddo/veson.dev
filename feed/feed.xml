@@ -1,138 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:base="en">
-	<title>veson.dev</title>
-	
-	<link href="https://veson.dev/feed/feed.xml" rel="self"/>
-	<link href="https://veson.dev/"/>
-	<updated>2023-07-17T00:00:00Z</updated>
-	<id>https://veson.dev/</id>
-	<author>
-		<name>Alejandro</name>
-		
-	</author>
-	
-	<entry>
-		<title>Example Org Mode Title</title>
-		<link href="https://veson.dev/blog/sixthpost/"/>
-		<updated>2023-07-17T00:00:00Z</updated>
-		<id>https://veson.dev/blog/sixthpost/</id>
-		<content type="html">&lt;p&gt;This org-mode src block has been run and has results.&lt;/p&gt;
-&lt;pre class=&quot;language-bash&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; hello&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Results:&lt;/p&gt;
-&lt;pre class=&quot;language-example&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-example&quot;&gt;hello&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Another src block, now in elisp.&lt;/p&gt;
-&lt;pre class=&quot;language-elisp&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-elisp&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Hello, World!&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Output:&lt;/p&gt;
-&lt;pre class=&quot;language-example&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-example&quot;&gt;Hello, World!&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Source blocks without specified language get rendered as a quote, which
-is undesirable. Just let it be an src block of text-mode.&lt;/p&gt;
-&lt;pre class=&quot;language-text&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;just some text&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here&#39;s not an src, but an example block, looks exacly the same:&lt;/p&gt;
-&lt;pre class=&quot;language-example&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-example&quot;&gt;example text&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here&#39;s an awesome possum.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://veson.dev/blog/sixthpost/possum.png&quot; alt=&quot;awesome possum&quot;&gt;&lt;/p&gt;
-&lt;p&gt;And here&#39;s a table. It gets rendered without borders in this template
-even in markdown for some reason. But that&#39;s easy to fix in css.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Header 1&lt;/th&gt;
-&lt;th&gt;Header 2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Cell 1&lt;/td&gt;
-&lt;td&gt;Cell 2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Cell 3&lt;/td&gt;
-&lt;td&gt;Cell 4&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+<?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Blog Title</title>
+  <subtitle>This is a longer description about your blog.</subtitle>
+  <link href="https://example.com/feed/feed.xml" rel="self" />
+  <link href="https://example.com/" />
+  <updated>2025-05-25T00:00:00Z</updated>
+  <id>https://example.com/</id>
+  <author>
+    <name>Your Name</name>
+  </author>
+  <entry>
+    <title>Fourth normal form</title>
+    <link href="https://example.com/blog/fourth-normal-form/" />
+    <updated>2025-05-25T00:00:00Z</updated>
+    <id>https://example.com/blog/fourth-normal-form/</id>
+    <content type="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://example.com/blog/fourth-normal-form/local-styles.css&quot;&gt;
+&lt;p&gt;For some reason 4NF is widely considered obscure, unimportant, rarely
+encountered, impractical, while 3NF is regarded as
+&lt;a href=&quot;https://stackoverflow.com/questions/6625569/what-is-the-level-of-database-normalization-that-is-practically-enough&quot;&gt;enough&lt;/a&gt;.
+I&#39;m not sure where this misunderstanding comes from. I&#39;m not even
+exaggerating, it&#39;s an old issue, here&#39;s a paper from 1992: &lt;a href=&quot;https://dl.acm.org/doi/10.1145/134510.134515&quot;&gt;&amp;quot;The
+practical need for fourth normal
+form&amp;quot;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If I were to write a database course, I&#39;d start with 4NF, as it&#39;s the
+easieast one of them all, it can be explained visually by showing
+drop-down lists on an html form, where &lt;em&gt;the first field determines
+what&#39;s shown in other options&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;unnecessary-combinations&quot;&gt;Unnecessary combinations&lt;/h2&gt;
+&lt;p&gt;Let&#39;s say we have a page for students to choose a course, an instructor,
+and available languages. The options could look like this when you
+choose databases:&lt;/p&gt;
+&lt;img src=&quot;https://example.com/blog/fourth-normal-form/2025-05-24_21-06-37_screenshot.png&quot; class=&quot;my-img-centered&quot;&gt;
+&lt;p&gt;The corresponding table would be:&lt;/p&gt;
+&lt;table class=&quot;my-table&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Instructor&lt;/th&gt;
+            &lt;th&gt;Language&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Databases&lt;/td&gt;
+            &lt;td&gt;Jamie&lt;/td&gt;
+            &lt;td&gt;English&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Databases&lt;/td&gt;
+            &lt;td&gt;Jamie&lt;/td&gt;
+            &lt;td&gt;German&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Databases&lt;/td&gt;
+            &lt;td&gt;Cody&lt;/td&gt;
+            &lt;td&gt;English&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Databases&lt;/td&gt;
+            &lt;td&gt;Cody&lt;/td&gt;
+            &lt;td&gt;German&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;p&gt;Or we could break it down and let students choose an instructor and a
+language separately:&lt;/p&gt;
+&lt;img src=&quot;https://example.com/blog/fourth-normal-form/2025-05-24_21-13-22_screenshot.png&quot; class=&quot;my-img-centered&quot;&gt;
+&lt;p&gt;The tables would be:&lt;/p&gt;
+&lt;table class=&quot;my-table&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Instructor&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Databases&lt;/td&gt;
+            &lt;td&gt;Jamie&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Databases&lt;/td&gt;
+            &lt;td&gt;Cody&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table class=&quot;my-table&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Language&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Databases&lt;/td&gt;
+            &lt;td&gt;English&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Databases&lt;/td&gt;
+            &lt;td&gt;German&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;But what if you choose philosophy, and teaching it is too hard in a
+foreigh language? Kris can only do it in English, and Sophia only in
+French:&lt;/p&gt;
+&lt;img src=&quot;https://example.com/blog/fourth-normal-form/2025-05-24_21-16-04_screenshot.png&quot; class=&quot;my-img-centered&quot;&gt;
+&lt;p&gt;The corresponding part of the table would be:&lt;/p&gt;
+&lt;table class=&quot;my-table&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Instructor&lt;/th&gt;
+            &lt;th&gt;Language&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Philosophy&lt;/td&gt;
+            &lt;td&gt;Kris&lt;/td&gt;
+            &lt;td&gt;English&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Philosophy&lt;/td&gt;
+            &lt;td&gt;Sophia&lt;/td&gt;
+            &lt;td&gt;French&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Then we can&#39;t break it down like we were going to before. If we did
+break it down, we would have to convey the information that, e.g.,
+Sophia doesn&#39;t teach philosophy in English some other way, like by
+showing an error message and politely asking to pick another option. Or
+we can decide to let students choose and listen to Kris and Sophia
+awkwardly philosophizing in their non-native languages.&lt;/p&gt;
+&lt;p&gt;If we were talking about relations, this would be about whether or not
+to break down (course, instructor, language) into (course, instructor)
+and (course, language) in order to avoid having a lot of redundant
+combinations of instructors and languages in the table.&lt;/p&gt;
+&lt;p&gt;That&#39;s all what 4NF is about: if we can break a relation down to avoid
+unnecessary combinations, then we should, because it&#39;s a 4NF violation.
+If we can&#39;t, then we shouldn&#39;t.&lt;/p&gt;
+&lt;h2 id=&quot;lots-of-combinations&quot;&gt;Lots of combinations&lt;/h2&gt;
+&lt;p&gt;The following example is slightly contrived, because in reality this
+would be much more complex and interesting, but it illustrates the
+point. If we were designing a schema for a sportswear store, we would
+probably end up with something like this:&lt;/p&gt;
+&lt;img src=&quot;https://example.com/blog/fourth-normal-form/2025-05-24_23-07-48_screenshot.png&quot; class=&quot;my-img-centered&quot;&gt;
+&lt;p&gt;And not this, which is bad UX and violates 4NF:&lt;/p&gt;
+&lt;img src=&quot;https://example.com/blog/fourth-normal-form/2025-05-24_21-28-34_screenshot.png&quot; class=&quot;my-img-centered&quot;&gt;
+&lt;p&gt;Here the relations would be (product, size) and (product, color) instead
+of (product, size, color), because the latter would have all the
+combinations of sizes and colors redundantly. Imagine the number of
+entries in this list if there were even more sizes and colors, and if we
+added printed image and other features to the relation.&lt;/p&gt;
+&lt;h2 id=&quot;maintaining-integrity&quot;&gt;Maintaining integrity&lt;/h2&gt;
+&lt;p&gt;Why do we even care about 4NF violation? Because, for example, changing
+an available color from green to yellow would have to be done in
+multiple rows instead of one.&lt;/p&gt;
+&lt;p&gt;It doesn&#39;t seem like a big deal, but at larger scale maintaining
+integrity in application logic rather than in schema design is
+error-prone and without a reason should be avoided. Usually the reason
+is performance, but it has to be measured first before making
+trade-offs.&lt;/p&gt;
+&lt;h2 id=&quot;why-are-some-explanations-so-weird&quot;&gt;Why are some explanations so weird?&lt;/h2&gt;
+&lt;p&gt;Lastly, there are examples of 4NF violation that can be found in the
+internet that are outright weird and confusing, because they are taken
+out of context and teach nothing.&lt;/p&gt;
+&lt;p&gt;Here are two absolutely independent lists that simply shouldn&#39;t be in
+one table side by side, namely student&#39;s courses and hobbies:&lt;/p&gt;
+&lt;table class=&quot;my-table&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Student&lt;/th&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Hobby&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jason&lt;/td&gt;
+            &lt;td&gt;Algorithms&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jason&lt;/td&gt;
+            &lt;td&gt;Databases&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jason&lt;/td&gt;
+            &lt;td&gt;Calculus&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jason&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+            &lt;td&gt;Running&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jason&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+            &lt;td&gt;Photography&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Sometimes presented like this, which is cryptic, these combinations make
+no sense:&lt;/p&gt;
+&lt;table class=&quot;my-table&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Student&lt;/th&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Hobby&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jason&lt;/td&gt;
+            &lt;td&gt;Algorithms&lt;/td&gt;
+            &lt;td&gt;Running&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jason&lt;/td&gt;
+            &lt;td&gt;Databases&lt;/td&gt;
+            &lt;td&gt;Running&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jason&lt;/td&gt;
+            &lt;td&gt;Calculus&lt;/td&gt;
+            &lt;td&gt;Photography&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;No one in their right mind would ever design a table like this. Yet this
+is discussed in some guides, and surprizingly or not, but there is a
+reason why, which is never given though, and as it happens, it&#39;s
+historical. The following great blog post sheds light: &lt;a href=&quot;https://www.cargocultcode.com/normalization-is-not-a-process/&quot;&gt;&amp;quot;Normalization
+is not a
+process&amp;quot;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Basically, tables like this are artifacts of a particular process, which
+is taught in traditional courses, often without a clear explanation why
+it is taught at all.&lt;/p&gt;
+&lt;p&gt;Well, back in the day, when relational databases were first introduced,
+there had to be a way to migrate from existing hierarchical storage
+without losing information. It involves taking all the attributes that
+can be found in data, and putting them in one huge relation and then
+iteratively breaking it down into smaller relations until there&#39;s
+nothing to split. The process itself is fine and really useful in
+certain circumstances, but it&#39;s purely mechanistical and doesn&#39;t give
+any insights, and sometimes intermediate tables look like shown above
+before being broken down.&lt;/p&gt;
+&lt;p&gt;We don&#39;t have to stick to this process when we don&#39;t migrate from
+hierarchical storage. When we design schemas, relations that just make
+sense turn out to be fine most of the time.&lt;/p&gt;
+&lt;h2 id=&quot;good-news&quot;&gt;Good news&lt;/h2&gt;
+&lt;p&gt;A lot of schemas are in 4NF unknowingly, because it&#39;s so intuitive to
+avoid unnecesary combinations.&lt;/p&gt;
+&lt;p&gt;Another nice thing to know about 4NF is &amp;quot;only in rare situations does a
+4NF table not conform to 5NF&amp;quot;, quote from
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Fifth_normal_form#Usage&quot;&gt;wikipedia&lt;/a&gt;. One
+less thing to worry about.&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I believe this and other misunderstandings can be cleared by providing
+better examples and restructuring courses.&lt;/p&gt;
+&lt;p&gt;And I&#39;m not sure 4NF is completely unimportant, because we use a simple
+theory that gives some guarantees about data integrity, and knowing its
+limits is not that unhelpful.&lt;/p&gt;
+&lt;p&gt;P.S. I hope clicking on screenshots is not too frustrating haha.&lt;/p&gt;
 </content>
-	</entry>
-	
-	<entry>
-		<title>This is my fourth post.</title>
-		<link href="https://veson.dev/blog/fourthpost/"/>
-		<updated>2018-09-30T00:00:00Z</updated>
-		<id>https://veson.dev/blog/fourthpost/</id>
-		<content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://veson.dev/img/IdthKOzqFA-350.avif 350w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://veson.dev/img/IdthKOzqFA-350.webp 350w&quot;&gt;&lt;img alt=&quot;A possum parent and two possum kids hanging from the iconic red balloon&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://veson.dev/img/IdthKOzqFA-350.png&quot; width=&quot;350&quot; height=&quot;685&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
-&lt;h2 id=&quot;section-header&quot; tabindex=&quot;-1&quot;&gt;Section Header &lt;a class=&quot;header-anchor&quot; href=&quot;https://veson.dev/blog/fourthpost/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
-</content>
-	</entry>
-	
-	<entry>
-		<title>This is my third post.</title>
-		<link href="https://veson.dev/blog/thirdpost/"/>
-		<updated>2018-08-24T00:00:00Z</updated>
-		<id>https://veson.dev/blog/thirdpost/</id>
-		<content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
-&lt;h2 id=&quot;code&quot; tabindex=&quot;-1&quot;&gt;Code &lt;a class=&quot;header-anchor&quot; href=&quot;https://veson.dev/blog/thirdpost/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;h3 id=&quot;styled-with-syntax&quot; tabindex=&quot;-1&quot;&gt;Styled (with Syntax) &lt;a class=&quot;header-anchor&quot; href=&quot;https://veson.dev/blog/thirdpost/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// this is a command&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;myCommand&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-	counter&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;// Test with a line break above this line.&lt;/span&gt;
-console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;Test&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;unstyled&quot; tabindex=&quot;-1&quot;&gt;Unstyled &lt;a class=&quot;header-anchor&quot; href=&quot;https://veson.dev/blog/thirdpost/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// this is a command
-function myCommand() {
-	let counter = 0;
-	counter++;
-}
-
-// Test with a line break above this line.
-console.log(&#39;Test&#39;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;section-header&quot; tabindex=&quot;-1&quot;&gt;Section Header &lt;a class=&quot;header-anchor&quot; href=&quot;https://veson.dev/blog/thirdpost/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
-</content>
-	</entry>
-	
-	<entry>
-		<title>This is my second post with a much longer title.</title>
-		<link href="https://veson.dev/blog/secondpost/"/>
-		<updated>2018-07-04T00:00:00Z</updated>
-		<id>https://veson.dev/blog/secondpost/</id>
-		<content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
-&lt;h2 id=&quot;section-header&quot; tabindex=&quot;-1&quot;&gt;Section Header &lt;a class=&quot;header-anchor&quot; href=&quot;https://veson.dev/blog/secondpost/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://veson.dev/blog/firstpost/&quot;&gt;First post&lt;/a&gt;
-&lt;a href=&quot;https://veson.dev/blog/thirdpost/&quot;&gt;Third post&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
-</content>
-	</entry>
-	
-	<entry>
-		<title>This is my first post.</title>
-		<link href="https://veson.dev/blog/firstpost/"/>
-		<updated>2018-05-01T00:00:00Z</updated>
-		<id>https://veson.dev/blog/firstpost/</id>
-		<content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;h2 id=&quot;section-header&quot; tabindex=&quot;-1&quot;&gt;Section Header &lt;a class=&quot;header-anchor&quot; href=&quot;https://veson.dev/blog/firstpost/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
-&lt;pre class=&quot;language-diff-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// this is a command&lt;/span&gt;
-&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;myCommand&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;span class=&quot;token inserted-sign inserted language-js&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;span class=&quot;token deleted-sign deleted language-js&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;  counter&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-&lt;/span&gt;
-&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// Test with a line break above this line.&lt;/span&gt;
-&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;Test&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-</content>
-	</entry>
+  </entry>
 </feed>
