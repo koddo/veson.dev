@@ -255,9 +255,7 @@ Another nice thing to know about 4NF is "only in rare situations does a 4NF tabl
 
 I believe this and other misunderstandings can be cleared by providing better examples and restructuring courses.
 
-And I'm not sure 4NF is completely unimportant, because we use a simple theory that gives some guarantees about data integrity, and knowing its limits is not that unhelpful.
-
-P.S. I hope clicking on screenshots is not too frustrating haha.
+And I'm not sure 4NF is completely unimportant. We use a simple theory for managing complexity that gives some guarantees about data integrity, and knowing its limits is not that unhelpful.
 
 
 
