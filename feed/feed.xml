@@ -266,10 +266,9 @@ less thing to worry about.&lt;/p&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;I believe this and other misunderstandings can be cleared by providing
 better examples and restructuring courses.&lt;/p&gt;
-&lt;p&gt;And I&#39;m not sure 4NF is completely unimportant, because we use a simple
-theory that gives some guarantees about data integrity, and knowing its
-limits is not that unhelpful.&lt;/p&gt;
-&lt;p&gt;P.S. I hope clicking on screenshots is not too frustrating haha.&lt;/p&gt;
+&lt;p&gt;And I&#39;m not sure 4NF is completely unimportant. We use a simple theory
+for managing complexity that gives some guarantees about data integrity,
+and knowing its limits is not that unhelpful.&lt;/p&gt;
 </content>
   </entry>
 </feed>
