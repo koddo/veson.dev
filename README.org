@@ -7,16 +7,30 @@ I configured https://github.com/11ty/eleventy-base-blog so that it renders org f
 
 * How to run
 
-podman build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t my-11ty .
-podman run --userns=keep-id -it --rm -p 8080:8080 --volume $(pwd):/home/node/blog my-11ty bash -l
+#+begin_src bash
+podman build -t veson-dev-blog --build-arg UID=$(id -u) --build-arg GID=$(id -g) .
 
+mkdir -p ./_site ./node_modules
+podman run -it --rm -p 8080:8080 \
+       -v $(pwd):/home/appuser/workspace:ro \
+       -v $(pwd)/_site:/home/appuser/workspace/_site \
+       -v $(pwd)/node_modules:/home/appuser/workspace/node_modules \
+       -v $(pwd)/npins:/home/appuser/workspace/npins \
+       -v $(pwd)/package.json:/home/appuser/workspace/package.json \
+       -v $(pwd)/package-lock.json:/home/appuser/workspace/package-lock.json \
+       --workdir /home/appuser/workspace \
+       veson-dev-blog
+#+end_src
 
+Notice :ro above.
 
 ** Updates
 
 Add a remote named eleventy-base-blog--updates that points to https://github.com/11ty/eleventy-base-blog and merge into 11ty.
 
-
+#+begin_src bash
+npins update
+#+end_src
 
 * Todo
 
