@@ -5,25 +5,25 @@ Around three years ago I got scrolling-induced RSI, which is Repetitive Strain I
 
 Basically, I hurt my hand by using the mouse wheel too much.
 
-I was obsessed with trying to learn more about how transformers work in LLMs. I had been scrolling papers, code, and explanations back and forth for many days on end, which I don't normally do, because the context I want or have to understand at once is usually much smaller.
+I was obsessed with trying to learn more about how transformers work in LLMs. I had been scrolling back and forth through papers, code, and explanations for many days on end, far more than I usually do, since the amount of context I need to grasp at once is normally much smaller.
 
-I couldn't use the mouse any more, so I had to go to a store and try out an ergonomic vertical mouse. Luckily, the staff didn't object and let me do this. I didn't buy it, it didn't help at all, the hand still hurt with every movement, including clicking.
+At some point, I couldn't use the mouse anymore due to pain. So I had to go to a store and try out an ergonomic vertical mouse. Luckily, the staff didn't object and let me do this. Well, I didn't buy it. It didn't help at all, because my hand still hurt with every movement, including clicking.
 
-Then after a bit of experimenting I came up with the following: I swapped the mouse buttons in the settings, it's now configured as left-handed, and I click the primary button with two fingers:
+Then, after a bit of experimenting, I came up with the following: I swapped the mouse buttons in the settings, so it's now configured as left-handed, and I click the primary button with two fingers.
 
 [[file:hand-on-mouse-position-adjusted-for-clicking-with-two-fingers.jpg]]
 
 It looks weird, but it reduces strain on my hand significantly.
 
-The index finger moves to the regular position for a brief moment to click the secondary button. Unfortunately, this is not for gaming nor 3d modeling. 
+The index finger moves to the regular position for a brief moment to click the secondary button. Unfortunately, this is not for gaming or 3D modeling. 
 
 [[file:hand-on-mouse-position-usual.jpg]]
 
-I have to add that the mouse should not be flat, because otherwise it's too much strain on the pinky, when I lift it for movement.
+I have to add that the mouse should not be flat, because otherwise it's too much strain on the pinky when I lift it for movement.
 
-Also I bought an external numpad, to scroll with my other hand.
+Also, I bought an external numpad to scroll with my left hand occasionally.
 
-It took many months for my hand to heal, but it did, and I'm sharing this because I haven't found anything similar online. Hopefully, this would be helpful for someone.
+It took many months for my hand to heal, but it did eventually, and I'm sharing this because I haven't found anything similar online. Hopefully, this will be helpful to someone else.
 
 
 
