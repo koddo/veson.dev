@@ -8,21 +8,26 @@ I configured https://github.com/11ty/eleventy-base-blog so that it renders org f
 * How to run
 
 #+begin_src bash
-podman build -t veson-dev-blog --build-arg UID=$(id -u) --build-arg GID=$(id -g) .
+docker build -t veson-dev-blog --build-arg UID=$(id -u) --build-arg GID=$(id -g) .
 
 mkdir -p ./_site ./node_modules
-podman run -it --rm -p 8080:8080 \
-       -v $(pwd):/home/appuser/workspace:ro \
+docker run -it --rm -p 8080:8080 \
        -v $(pwd)/_site:/home/appuser/workspace/_site \
        -v $(pwd)/node_modules:/home/appuser/workspace/node_modules \
        -v $(pwd)/npins:/home/appuser/workspace/npins \
        -v $(pwd)/package.json:/home/appuser/workspace/package.json \
        -v $(pwd)/package-lock.json:/home/appuser/workspace/package-lock.json \
+       -v $(pwd):/home/appuser/workspace:ro \
        --workdir /home/appuser/workspace \
        veson-dev-blog
 #+end_src
 
 Notice :ro above.
+
+
+# appuser has to be in the nixbld group for some reason in podman, while it works without this group in docker
+RUN groupadd nixbld && \
+    usermod -aG nixbld appuser
 
 ** Updates
 
@@ -35,4 +40,15 @@ npins update
 * Todo
 
 - [ ] Description is commented out temporarily, I haven't decided what it should be.
+
+
+
+* ADRs
+
+** Docker instead of podman
+
+It works better in docker at the moment of writing. Honestly, I don't remember what exactly. Please document this next time.
+Probably it was the :ro mount. Maybe nix.
+
+
 
