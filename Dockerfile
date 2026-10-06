@@ -1,4 +1,4 @@
-FROM debian:13-slim
+FROM docker.io/debian:13-slim
 
 # Defaults. Override with --build-arg UID=$(id -u) --build-arg GID=$(id -g) to match host system.
 # We need this, when we have local volumes. Otherwise we'll have problems with permissions.
@@ -12,22 +12,21 @@ RUN groupadd -g $GID appuser && \
         --no-log-init \
         appuser
 
-RUN apt update && \
-    apt install -y \
-                curl \
-                # xz is for the nix installer \
-                xz-utils
+RUN apt-get update && \
+    apt-get install -y \
+                    curl \
+                    # xz is for the nix installer \
+                    xz-utils
 
 # We have to create this dir, otherwise the nix installer would try and fail this in sudo.
-RUN mkdir -m 0755 /nix && chown appuser /nix
+RUN mkdir -m 0755 /nix && chown appuser:appuser /nix
 USER appuser
 WORKDIR /home/appuser
 ENV USER=appuser
 # $USER has to be set for the nix installer.
 
-# # # Single-user installation, see https://nixos.org/download/
+# Single-user installation, see https://nixos.org/download/
 RUN curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- --no-daemon
-
 
 # Cache dependencies for shell.nix in the image, otherwise nix-shell is going to download them all the time.
 COPY shell.nix /tmp
@@ -43,5 +42,4 @@ ENTRYPOINT ["sh", "-c", ". $HOME/.nix-profile/etc/profile.d/nix.sh && nix-shell 
 CMD ["bash"]
 
 RUN echo "npm ci && npx @11ty/eleventy --serve --output=./_site" >> ~/.bash_history
-# to ../_site because . is :ro
-
+# to ../_site because /home/appuser/workspace is :ro
