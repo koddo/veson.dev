@@ -6,7 +6,8 @@
     padding: 1em;
     border: 1px #ddd solid;
 }
-.my-table th, td {
+
+.my-table th, .my-table td {
     font-weight: normal;
     text-align: center;
 }
@@ -14,6 +15,10 @@
 .my-table th {
     border-bottom: 1px #ddd solid;
     padding-bottom: 0.5em;
+}
+
+.my-table tr:first-child td {
+    padding-top: 0.5em;
 }
 
 .my-img-centered {
